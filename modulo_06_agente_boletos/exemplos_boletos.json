@@ -1,0 +1,72 @@
+[
+    {
+        "id": "BOL-001",
+        "texto_boleto": "Banco Itaú (341)\nBeneficiário: Empresa ABC Ltda\nCNPJ: 12.345.678/0001-90\nValor: R$ 1.250,00\nVencimento: 25/03/2026\nLinha Digitável: 34191.09065 44830.136706 00000.000178 1 70060000125000\nDescrição: Mensalidade serviço de consultoria - Março/2026",
+        "dados_esperados": {
+            "banco": "Itaú Unibanco",
+            "banco_codigo": "341",
+            "beneficiario": "Empresa ABC Ltda",
+            "cnpj": "12.345.678/0001-90",
+            "valor": 1250.00,
+            "vencimento": "2026-03-25",
+            "linha_digitavel": "34191090654483013670600000000178170060000125000",
+            "status": "DENTRO DO PRAZO"
+        }
+    },
+    {
+        "id": "BOL-002",
+        "texto_boleto": "Banco Bradesco (237)\nBeneficiário: Distribuidora Norte Sul SA\nCNPJ: 98.765.432/0001-10\nValor: R$ 3.780,50\nVencimento: 01/03/2026\nLinha Digitável: 23793.38128 60000.000003 00000.000400 1 70060000378050\nDescrição: NF 45123 - Material de escritório",
+        "dados_esperados": {
+            "banco": "Bradesco",
+            "banco_codigo": "237",
+            "beneficiario": "Distribuidora Norte Sul SA",
+            "cnpj": "98.765.432/0001-10",
+            "valor": 3780.50,
+            "vencimento": "2026-03-01",
+            "linha_digitavel": "23793381286000000000300000000400170060000378050",
+            "status": "VENCIDO"
+        }
+    },
+    {
+        "id": "BOL-003",
+        "texto_boleto": "Banco do Brasil (001)\nBeneficiário: Prefeitura Municipal de São Paulo\nCNPJ: 46.392.130/0001-30\nValor: R$ 450,00\nVencimento: 16/03/2026\nLinha Digitável: 00190.00009 02523.451004 00000.000186 1 70060000045000\nDescrição: IPTU 2026 - Parcela 3/10",
+        "dados_esperados": {
+            "banco": "Banco do Brasil",
+            "banco_codigo": "001",
+            "beneficiario": "Prefeitura Municipal de São Paulo",
+            "cnpj": "46.392.130/0001-30",
+            "valor": 450.00,
+            "vencimento": "2026-03-16",
+            "linha_digitavel": "00190000090252345100400000000186170060000045000",
+            "status": "VENCE HOJE"
+        }
+    },
+    {
+        "id": "BOL-004",
+        "texto_boleto": "Santander (033)\nBeneficiário: Telecom Brasil Ltda\nCNPJ: 33.000.118/0001-79\nValor: R$ 189,90\nVencimento: 28/03/2026\nLinha Digitável: 03399.63290 43000.000006 00000.000019 1 70060000018990\nDescrição: Fatura telefone/internet - Março/2026",
+        "dados_esperados": {
+            "banco": "Santander",
+            "banco_codigo": "033",
+            "beneficiario": "Telecom Brasil Ltda",
+            "cnpj": "33.000.118/0001-79",
+            "valor": 189.90,
+            "vencimento": "2026-03-28",
+            "linha_digitavel": "03399632904300000000600000000019170060000018990",
+            "status": "DENTRO DO PRAZO"
+        }
+    },
+    {
+        "id": "BOL-005",
+        "texto_boleto": "Caixa Econômica Federal (104)\nBeneficiário: Condomínio Residencial Park Tower\nCNPJ: 15.234.567/0001-88\nValor: R$ 12.500,00\nVencimento: 10/02/2026\nLinha Digitável: 10491.12345 67890.123456 78901.234567 8 70060001250000\nDescrição: Taxa condominial extraordinária - Obra elevadores",
+        "dados_esperados": {
+            "banco": "Caixa Econômica Federal",
+            "banco_codigo": "104",
+            "beneficiario": "Condomínio Residencial Park Tower",
+            "cnpj": "15.234.567/0001-88",
+            "valor": 12500.00,
+            "vencimento": "2026-02-10",
+            "linha_digitavel": "10491123456789012345678901234567870060001250000",
+            "status": "VENCIDO"
+        }
+    }
+]

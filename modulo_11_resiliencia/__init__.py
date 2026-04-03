@@ -1,0 +1,1 @@
+"""Módulo 11 - Resiliência operacional."""

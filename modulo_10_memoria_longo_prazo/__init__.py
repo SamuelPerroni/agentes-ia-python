@@ -1,0 +1,1 @@
+"""Módulo 10 - Memória de longo prazo e RAG simples."""

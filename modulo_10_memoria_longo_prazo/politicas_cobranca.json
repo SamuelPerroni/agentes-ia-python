@@ -1,0 +1,20 @@
+[
+  {
+    "id": "POL-001",
+    "titulo": "Política padrão de multa",
+    "tags": ["multa", "juros", "atraso"],
+    "conteudo": "Boletos vencidos recebem multa fixa de 2% e juros de 0,033% ao dia, salvo contrato específico."
+  },
+  {
+    "id": "POL-002",
+    "titulo": "Aprovação humana para alto valor",
+    "tags": ["hitl", "risco", "aprovacao"],
+    "conteudo": "Pagamentos ou análises com valor acima de R$ 5.000 devem ser revisados por operador humano."
+  },
+  {
+    "id": "POL-003",
+    "titulo": "Mascaramento de dados pessoais",
+    "tags": ["pii", "lgpd", "seguranca"],
+    "conteudo": "CPF, CNPJ pessoal, email e telefone devem ser mascarados antes de persistência em logs ou traces."
+  }
+]
