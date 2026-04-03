@@ -23,13 +23,13 @@ Um lote de 50 contratos de 20 páginas cada = ~1M tokens.
 ESTRATÉGIAS (do mais simples ao mais sofisticado):
 
   ┌──────────────────────────────────────────────────────────┐
-  │  ESTRATÉGIA          QUANDO USAR                        │
-  │  ─────────────────────────────────────────────────────  │
-  │  Truncar             Início/fim do doc tem o relevante  │
-  │  Sliding Window      Precisa processar o doc inteiro    │
-  │  Chunking + Map      Extração por seção, depois mescla  │
-  │  Summarization Loop  Histórico de conversa longo        │
-  │  RAG (Módulo 10)     Base de conhecimento grande        │
+  │  ESTRATÉGIA          QUANDO USAR                         │
+  │  ─────────────────────────────────────────────────────   │
+  │  Truncar             Início/fim do doc tem o relevante   │
+  │  Sliding Window      Precisa processar o doc inteiro     │
+  │  Chunking + Map      Extração por seção, depois mescla   │
+  │  Summarization Loop  Histórico de conversa longo         │
+  │  RAG (Módulo 10)     Base de conhecimento grande         │
   └──────────────────────────────────────────────────────────┘
 
 SLIDING WINDOW — processar documentos maiores que o contexto:
@@ -279,8 +279,8 @@ class ResultadoMapReduce:
     conflitos: list[str]  # campos com valores conflitantes entre chunks
 
 
-def _mergar_extrações(
-    extrações: list[dict[str, Any]],
+def _mergar_extracoes(
+    extracoes: list[dict[str, Any]],
 ) -> ResultadoMapReduce:
     """
     Consolida extrações parciais de múltiplos chunks.
@@ -291,7 +291,7 @@ def _mergar_extrações(
     - Conflito: registra mas não descarta
 
     Parâmetros:
-    - extrações: lista de dicts com campos extraídos por chunk
+    - extracoes: lista de dicts com campos extraídos por chunk
 
     Retorna:
     - ResultadoMapReduce com campos consolidados
@@ -301,9 +301,9 @@ def _mergar_extrações(
 
     campos_numericos = {"valor", "multa", "juros"}
 
-    for campo in set(k for e in extrações for k in e):
+    for campo in set(k for e in extracoes for k in e):
         valores = [
-            e[campo] for e in extrações
+            e[campo] for e in extracoes
             if campo in e and e[campo] is not None
         ]
         if not valores:
@@ -327,7 +327,7 @@ def _mergar_extrações(
 
     return ResultadoMapReduce(
         campos_extraidos=consolidado,
-        chunks_processados=len(extrações),
+        chunks_processados=len(extracoes),
         tokens_totais=0,
         conflitos=conflitos,
     )
@@ -520,7 +520,7 @@ def demo_contexto_longo() -> None:
     # ── Seção 3: Sliding window ─────────────────────────────────
     console.print("\n[bold]── 3. Sliding window — extração simulada ──[/bold]")
 
-    extrações_parciais: list[dict[str, Any]] = []
+    extracoes_parciais: list[dict[str, Any]] = []
 
     def _extrair_chunk(texto: str, idx: int, total: int) -> str:
         """Simula extração de valor e multa de um chunk."""
@@ -528,7 +528,7 @@ def demo_contexto_longo() -> None:
         resultado = None
         if valores:
             val_float = float(valores[0].replace(".", "").replace(",", "."))
-            extrações_parciais.append({
+            extracoes_parciais.append({
                 "valor": val_float,
                 "banco": "Banco Simulado",
                 "vencimento": "2026-12-31",
@@ -546,9 +546,9 @@ def demo_contexto_longo() -> None:
                   f"de {len(chunks)} chunks totais")
 
     # ── Seção 4: Map-Reduce ─────────────────────────────────────
-    if extrações_parciais:
+    if extracoes_parciais:
         console.print("\n[bold]── 4. Consolidação Map-Reduce ──[/bold]")
-        resultado_final = _mergar_extrações(extrações_parciais)
+        resultado_final = _mergar_extracoes(extracoes_parciais)
         console.print(
             f"  chunks processados: {resultado_final.chunks_processados}\n"
             f"  campos consolidados: {resultado_final.campos_extraidos}\n"
