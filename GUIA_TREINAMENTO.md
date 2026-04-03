@@ -6,11 +6,11 @@
 
 | Item | Detalhe |
 | ------ | --------- |
-| **Duração estimada** | 10 a 14 horas |
+| **Duração estimada** | 14 a 18 horas |
 | **Nível** | Intermediário (requer Python básico) |
 | **LLM** | Groq API (gratuita) + Llama 3.3 70B |
 | **Projeto Final** | Agente de Leitura de Boletos Bancários |
-| **Módulos** | 37 (trilha base + camadas de maturidade APA) |
+| **Módulos** | 43 (trilha base + camadas de maturidade APA) |
 
 ### Objetivo
 
@@ -1030,6 +1030,134 @@ e depois para diretoria, com notificações em cada nível.
 
 ---
 
+## MÓDULO 38: Protocolo A2A — Agent-to-Agent (20 min)
+
+### Objetivo — A2A
+
+Demonstrar como agentes se descobrem e delegam tarefas entre si
+usando o protocolo A2A (Google, 2025): publicação de `AgentCard`,
+registro central e delegação de tarefas tipadas.
+
+### Arquivos — A2A
+
+- `modulo_38_a2a/01_a2a.py`
+
+### O que demonstrar — A2A
+
+1. `AgentCard` publica as capacidades do agente
+2. `AgentRegistry.find_by_skill` localiza o agente correto
+3. `OrchestratorAgent.delegate` envia `TaskRequest` e recebe `TaskResponse`
+4. `TaskStatus` rastreia o ciclo de vida da tarefa
+
+---
+
+## MÓDULO 39: Protocolo MCP — Model Context Protocol (20 min)
+
+### Objetivo — MCP
+
+Mostrar como o MCP (Anthropic, 2024) padroniza a conexão de
+ferramentas e fontes de dados a qualquer LLM: servidor expõe
+tools e resources; cliente descobre e chama via JSON-RPC.
+
+### Arquivos — MCP
+
+- `modulo_39_mcp/01_mcp.py`
+
+### O que demonstrar — MCP
+
+1. `MCPServer.handle_tools_list` retorna catálogo de ferramentas
+2. `MCPClient.list_tools` cacheia o catálogo localmente
+3. `executar_agente_mcp` simula loop de decisão da LLM com MCP
+4. `MCPResource` expõe políticas e documentos como dados read-only
+
+---
+
+## MÓDULO 40: Async com asyncio — Processamento Paralelo (20 min)
+
+### Objetivo — Async
+
+Processar dezenas de documentos em paralelo com `asyncio`,
+controlando a concorrência com `Semaphore` e medindo o
+gain real de throughput frente ao processamento sequencial.
+
+### Arquivos — Async
+
+- `modulo_40_async/01_async.py`
+
+### O que demonstrar — Async
+
+1. `processar_lote_async` usa `asyncio.gather` com concorrência limitada
+2. `processar_sequencial` como baseline de comparação
+3. Tabela de speedup: paralelo vs sequencial
+4. Padrão produtor/consumidor com `asyncio.Queue`
+
+---
+
+## MÓDULO 41: Fine-Tuning para Domínio Específico (20 min)
+
+### Objetivo — Fine-Tuning
+
+Decisão: quando fine-tuning supera prompt engineering? Como
+preparar o dataset em JSONL, avaliar qualidade dos exemplos e
+estimar o custo de treinamento antes de investir.
+
+### Arquivos — Fine-Tuning
+
+- `modulo_41_fine_tuning/01_fine_tuning.py`
+
+### O que demonstrar — Fine-Tuning
+
+1. `avaliar_qualidade` classifica exemplos de treinamento
+2. `Dataset.validar` reporta exemplos fracos ou inválidos
+3. `estimar_custo` calcula USD por epochs e tamanho do dataset
+4. Comparativo base model × fine-tuned nas mesmas perguntas
+
+---
+
+## MÓDULO 42: Prompt Caching — Redução de Custo (20 min)
+
+### Objetivo — Prompt Caching
+
+Demonstrar como armazenar partes fixas do contexto no lado
+do provedor (system prompt, políticas, documentos) para
+reutilizá-las em requisições subsequentes, reduzindo custo
+em até 90% e latência em até 85%.
+
+### Arquivos — Prompt Caching
+
+- `modulo_42_prompt_caching/01_prompt_caching.py`
+
+### O que demonstrar — Prompt Caching
+
+1. `CacheManager` rastreia hits, misses e economia acumulada
+2. `chamar_llm_com_cache` reduz tokens cobrados em cache hit
+3. Benchmark: 20 requisições com/sem caching → tabela comparativa
+4. Estratégia: quais partes do prompt devem ser marcadas para cache
+
+---
+
+## MÓDULO 43: Agente Auto-Corretivo (20 min)
+
+### Objetivo — Auto-Correção
+
+Construir um agente que valida a própria saída contra um schema,
+detecta erros específicos (JSON inválido, campo ausente, valor
+implausível) e refaz a tarefa com estratégias progressivas
+(reforço de formato → exemplo few-shot → tarefa simplificada).
+
+### Arquivos — Auto-Corretivo
+
+- `modulo_43_agente_autocorretivo/01_agente_autocorretivo.py`
+
+### O que demonstrar — Auto-Corretivo
+
+1. `ValidadorSaida` detecta erros com sugestão de correção
+2. `EstrategiaRetentativa` escala a rigidez do prompt a cada retry
+3. `AgenteAutocorretivo` executa loop com até 3 retentativas
+4. Métricas: taxa de sucesso, número médio de retentativas
+
+---
+
 ## 🎯 Checklist Final
 
 Ao final do treinamento, os participantes devem ser capazes de:
@@ -1073,6 +1201,12 @@ Ao final do treinamento, os participantes devem ser capazes de:
 - [ ] Validar fornecedores com pipeline multi-etapa (CNPJ, RF, sanções, certidões)
 - [ ] Medir KPIs e calcular ROI do processo automatizado
 - [ ] Implementar escalação com SLA para exceções não resolvidas
+- [ ] Conectar agentes usando o protocolo A2A (Agent-to-Agent)
+- [ ] Integrar ferramentas externas via MCP (Model Context Protocol)
+- [ ] Processar documentos em paralelo com asyncio e Semaphore
+- [ ] Preparar dataset e estimar custo de fine-tuning de domínio
+- [ ] Implementar prompt caching para reduzir custo em até 90%
+- [ ] Construir agente auto-corretivo com retry e prompt dinâmico
 
 ---
 
@@ -1234,6 +1368,24 @@ python modulo_36_kpis_roi/01_kpis_roi.py
 
 # Módulo 37
 python modulo_37_escalacao_sla/01_escalacao_sla.py
+
+# Módulo 38
+python modulo_38_a2a/01_a2a.py
+
+# Módulo 39
+python modulo_39_mcp/01_mcp.py
+
+# Módulo 40
+python modulo_40_async/01_async.py
+
+# Módulo 41
+python modulo_41_fine_tuning/01_fine_tuning.py
+
+# Módulo 42
+python modulo_42_prompt_caching/01_prompt_caching.py
+
+# Módulo 43
+python modulo_43_agente_autocorretivo/01_agente_autocorretivo.py
 
 # Testes automatizados
 pytest

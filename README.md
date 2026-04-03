@@ -68,6 +68,12 @@ copy .env.example .env
 | 35 | Onboarding de Fornecedores | `modulo_35_onboarding_fornecedor/` |
 | 36 | KPIs e ROI do Processo APA | `modulo_36_kpis_roi/` |
 | 37 | Escalação com SLA | `modulo_37_escalacao_sla/` |
+| 38 | Protocolo A2A (Agent-to-Agent) | `modulo_38_a2a/` |
+| 39 | Protocolo MCP (Model Context Protocol) | `modulo_39_mcp/` |
+| 40 | Async com asyncio | `modulo_40_async/` |
+| 41 | Fine-Tuning para Domínio Específico | `modulo_41_fine_tuning/` |
+| 42 | Prompt Caching | `modulo_42_prompt_caching/` |
+| 43 | Agente Auto-Corretivo | `modulo_43_agente_autocorretivo/` |
 
 ## Guia Completo
 
@@ -111,3 +117,12 @@ Além da trilha base (módulos 01–14), o treinamento inclui camadas progressiv
 - Onboarding de fornecedores (CNPJ, Receita Federal, sanções, certidões)
 - KPIs e cálculo de ROI para justificativa executiva
 - Escalação com SLA: N1 → N2 → N3 com notificação automática
+
+### Camada 6 — Protocolos Avançados e IA Moderna (módulos 38–43)
+
+- Protocolo A2A: descoberta e delegação entre agentes especializados
+- Protocolo MCP: integração padronizada de ferramentas e fontes de dados
+- Processamento paralelo com asyncio, Semaphore e padrão produtor/consumidor
+- Fine-tuning: preparação de dataset, avaliação de qualidade e estimativa de custo
+- Prompt caching: redução de custo em até 90% e latência em até 85%
+- Agente auto-corretivo: detecção de erros próprios e retry com prompt dinâmico
