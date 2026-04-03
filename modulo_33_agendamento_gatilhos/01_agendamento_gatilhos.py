@@ -249,7 +249,8 @@ class GatilhoDispatcher:
         try:
             exec_.resultado = handler(payload)
             exec_.status = "ok"
-        except Exception as exc:  # noqa: BLE001
+        # pylint: disable=broad-except
+        except Exception as exc:
             exec_.status = "erro"
             exec_.erro = str(exc)
         finally:
