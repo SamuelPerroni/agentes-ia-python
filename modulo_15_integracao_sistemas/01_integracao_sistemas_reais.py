@@ -31,11 +31,11 @@ Um analista humano que processa um boleto:
 
 FLUXO DE INTEGRAÇÃO DEMONSTRADO:
 
-  ┌─────────────────────────────────────────────────────┐
+  ┌──────────────────────────────────────────────────────┐
   │              Pipeline de Integração                  │
-  ├─────────────────────────────────────────────────────┤
+  ├──────────────────────────────────────────────────────┤
   │                                                      │
-  │  PDF/HTML/API  ──▶  Extrator  ──▶  Texto Limpo      │
+  │  PDF/HTML/API  ──▶  Extrator  ──▶  Texto Limpo       │
   │                                         │            │
   │                                         ▼            │
   │                               ┌──────────────┐       │
@@ -45,7 +45,7 @@ FLUXO DE INTEGRAÇÃO DEMONSTRADO:
   │                                      │               │
   │                                      ▼               │
   │                               Resultado estruturado  │
-  └─────────────────────────────────────────────────────┘
+  └──────────────────────────────────────────────────────┘
 
 PADRÕES COBERTOS:
 1. Extração de texto de PDF (com stub para demo sem dependência)

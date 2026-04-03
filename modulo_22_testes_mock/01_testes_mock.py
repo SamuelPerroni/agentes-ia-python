@@ -22,7 +22,7 @@ ONDE INSERIR O MOCK:
   ┌──────────────────────────────────────────────────────────┐
   │                      AGENTE                              │
   │                                                          │
-  │  entrada → [pré-processamento] → [chamada LLM] → saída  │
+  │  entrada → [pré-processamento] → [chamada LLM] → saída   │
   │                                        ▲                 │
   │                                        │                 │
   │                              ┌─────────┴────────┐        │

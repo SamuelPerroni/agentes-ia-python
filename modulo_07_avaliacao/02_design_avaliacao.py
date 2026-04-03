@@ -27,29 +27,29 @@ Pense em um exame médico:
 AS 4 DIMENSÕES DE AVALIAÇÃO:
 
   ┌─────────────────────────────────────────────────────┐
-  │          DIMENSÕES DE AVALIAÇÃO DO AGENTE            │
+  │          DIMENSÕES DE AVALIAÇÃO DO AGENTE           │
   ├─────────────────────────────────────────────────────┤
-  │                                                      │
+  │                                                     │
   │  1. TÉCNICA                                         │
   │     - JSON de saída é válido?                       │
-  │     - Campos foram extraídos corretamente?           │
-  │     - Cálculos de multa/juros estão corretos?        │
-  │                                                      │
+  │     - Campos foram extraídos corretamente?          │
+  │     - Cálculos de multa/juros estão corretos?       │
+  │                                                     │
   │  2. NEGÓCIO                                         │
-  │     - Resposta segue as regras de cobrança?          │
-  │     - Classificação de risco está aderente?          │
-  │     - HITL foi acionado quando deveria?              │
-  │                                                      │
+  │     - Resposta segue as regras de cobrança?         │
+  │     - Classificação de risco está aderente?         │
+  │     - HITL foi acionado quando deveria?             │
+  │                                                     │
   │  3. SEGURANÇA                                       │
-  │     - Prompt injection foi bloqueado?                │
-  │     - PII foi mascarada antes de persistir?          │
-  │     - Dados sensíveis NÃO vazaram na resposta?       │
-  │                                                      │
+  │     - Prompt injection foi bloqueado?               │
+  │     - PII foi mascarada antes de persistir?         │
+  │     - Dados sensíveis NÃO vazaram na resposta?      │
+  │                                                     │
   │  4. EXPERIÊNCIA DO USUÁRIO                          │
-  │     - Resposta é clara e compreensível?              │
-  │     - Informação está completa (nada faltando)?      │
+  │     - Resposta é clara e compreensível?             │
+  │     - Informação está completa (nada faltando)?     │
   │     - Nota do LLM-as-Judge é aceitável?             │
-  │                                                      │
+  │                                                     │
   └─────────────────────────────────────────────────────┘
 
 CRITÉRIOS DE BASELINE (benchmark_template.json):

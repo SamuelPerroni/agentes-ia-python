@@ -1,6 +1,4 @@
-# ============================================================
 # MÓDULO 12 - MANUAL vs FRAMEWORKS: MAPEAMENTO COMPLETO
-# ============================================================
 
 ## O que este módulo ensina?
 
@@ -10,6 +8,7 @@ você entenda **cada peça** que compõe um agente.
 
 Agora, vamos mapear cada conceito que implementamos manualmente para o que
 frameworks populares fazem automaticamente. Isso vai te preparar para:
+
 - Avaliar frameworks com **olhar crítico** (saber o que está "por trás")
 - Migrar para um framework quando fizer sentido
 - Não ficar "preso" a um framework por falta de entendimento
@@ -27,7 +26,7 @@ mas perigosas se você não entende o que acontece dentro delas.
 ## Mapeamento completo: Manual → Framework
 
 | Conceito manual | Onde aparece neste treinamento | Equivalente típico em framework | Exemplos de frameworks |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **System prompt** | módulo 01 (estilos de prompt), módulo 06 (agente boletos) | `PromptTemplate`, `system message`, `instructions` | LangChain, CrewAI, Semantic Kernel |
 | **Histórico de mensagens** | módulo 02 (agente com memória) | `memory`, `conversation state`, `chat history` | LangChain Memory, AutoGen |
 | **Tool schema + registry** | módulo 03 (tools com JSON Schema) | `@tool` decorator, `function`, `action`, `skill` | LangChain Tools, OpenAI Functions, Semantic Kernel Skills |
@@ -42,30 +41,35 @@ mas perigosas se você não entende o que acontece dentro delas.
 ## Frameworks mais relevantes em 2026
 
 ### 🔷 LangChain / LangGraph
+
 - **O que é:** Framework Python/JS mais popular para agentes
 - **Ponto forte:** Enorme ecossistema de integrações (LLMs, bancos vetoriais, tools)
 - **Ponto fraco:** Abstrações muito profundas — difícil debugar quando algo dá errado
 - **Quando usar:** Projetos que precisam de muitas integrações prontas
 
 ### 🔷 Semantic Kernel (Microsoft)
+
 - **O que é:** SDK da Microsoft para orquestração de IA
 - **Ponto forte:** Integração nativa com Azure OpenAI e ecossistema Microsoft
 - **Ponto fraco:** Menos exemplos e comunidade menor que LangChain
 - **Quando usar:** Empresas que já usam stack Microsoft/Azure
 
 ### 🔷 CrewAI
+
 - **O que é:** Framework focado em agentes multiagente colaborativos
 - **Ponto forte:** Conceito de "equipe" de agentes com papéis definidos
 - **Ponto fraco:** Menos flexível para cenários que não se encaixam no modelo de "crew"
 - **Quando usar:** Cenários multiagente com papéis bem definidos (módulo 08)
 
 ### 🔷 AutoGen (Microsoft)
+
 - **O que é:** Framework para agentes conversacionais multi-turno
 - **Ponto forte:** Foco em conversação entre agentes (ideal para debates/revisão)
 - **Ponto fraco:** API em evolução rápida (breaking changes frequentes)
 - **Quando usar:** Cenários onde agentes precisam "conversar" entre si
 
 ### 🔷 LlamaIndex
+
 - **O que é:** Framework especializado em RAG (Retrieval-Augmented Generation)
 - **Ponto forte:** Melhor suporte a fontes de dados e indexação
 - **Ponto fraco:** Menos foco em agentes, mais em pipeline de dados
@@ -73,7 +77,7 @@ mas perigosas se você não entende o que acontece dentro delas.
 
 ## Diagrama de decisão: Manual vs Framework
 
-```
+```Text
 Preciso de um agente de IA?
        │
        ├── É um prova de conceito / aprendizado?
@@ -95,19 +99,22 @@ Preciso de um agente de IA?
 
 ## Regras práticas
 
-### ✅ Quando USAR framework:
+### ✅ Quando USAR framework
+
 - Você precisa de **produtividade** (iteração rápida, muitas integrações)
 - O framework tem **manutenção ativa** e comunidade grande
 - Você **entende** o que o framework faz (não é caixa-preta pra você)
 - O projeto vai para **produção** com equipe que mantém o código
 
-### ❌ Quando NÃO usar framework:
+### ❌ Quando NÃO usar framework
+
 - Você está **aprendendo** (framework esconde a mecânica)
 - O framework **esconde demais** o fluxo crítico do seu domínio
 - Você precisa de **controle total** sobre cada decisão do agente
 - O framework tem **breaking changes** frequentes e sua equipe é pequena
 
-### 🎯 Regra de ouro:
+### 🎯 Regra de ouro
+
 > **Aprenda manualmente para entender a mecânica.**
 > **Use framework quando precisar de produtividade, integrações e escalabilidade.**
 > **Fuja de framework quando ele esconder demais o fluxo crítico do seu domínio.**

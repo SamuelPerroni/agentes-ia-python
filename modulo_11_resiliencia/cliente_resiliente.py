@@ -48,29 +48,29 @@ PADRÕES IMPLEMENTADOS:
 
 DIAGRAMA DO FLUXO:
 
-  ┌──────────────────────────────────────────────┐
+  ┌───────────────────────────────────────────────┐
   │           ClienteLLMResiliente                │
-  ├──────────────────────────────────────────────┤
-  │                                              │
-  │  Modelo Primário (ex: llama-3.3-70b)         │
-  │  ┌────────────────────────────────┐          │
-  │  │ Tentativa 1  →  OK? ──→ ✅     │          │
+  ├───────────────────────────────────────────────┤
+  │                                               │
+  │  Modelo Primário (ex: llama-3.3-70b)          │
+  │  ┌─────────────────────────────────┐          │
+  │  │ Tentativa 1  →  OK?             │          │
   │  │      │ falhou                   │          │
   │  │ wait 0.5s                       │          │
-  │  │ Tentativa 2  →  OK? ──→ ✅     │          │
+  │  │ Tentativa 2  →  OK?             │          │
   │  │      │ falhou                   │          │
   │  │ wait 1.0s                       │          │
-  │  │ Tentativa 3  →  OK? ──→ ✅     │          │
+  │  │ Tentativa 3  →  OK?             │          │
   │  │      │ falhou (esgotou retries) │          │
   │  └──────┼──────────────────────────┘          │
   │         ↓                                     │
-  │  Modelo Fallback (ex: llama-3.1-8b)          │
-  │  ┌────────────────────────────────┐          │
-  │  │ Tentativa 1  →  OK? ──→ ✅     │          │
+  │  Modelo Fallback (ex: llama-3.1-8b)           │
+  │  ┌─────────────────────────────────┐          │
+  │  │ Tentativa 1  →  OK?             │          │
   │  │      │ falhou                   │          │
-  │  │ Tentativa 2  →  OK? ──→ ✅     │          │
+  │  │ Tentativa 2  →  OK?             │          │
   │  │      │ falhou                   │          │
-  │  │ Tentativa 3  →  FALHA TOTAL ❌ │          │
+  │  │ Tentativa 3  →  FALHA TOTAL     │          │
   │  └─────────────────────────────────┘          │
   │                                               │
   │  → RuntimeError("Falha após retries...")      │

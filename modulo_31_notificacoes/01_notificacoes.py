@@ -24,7 +24,7 @@ ARQUITETURA:
   │     ▼                                                   │
   │  [ EventoBus ]  → publica evento                        │
   │     │                                                   │
-  │  ┌──┴──────────────────────────────────────┐           │
+  │  ┌──┴───────────────────────────────────────┐           │
   │  │  NotificadorEmail  NotificadorTeams      │           │
   │  │  NotificadorSlack  (extensível)          │           │
   │  └──────────────────────────────────────────┘           │

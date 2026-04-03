@@ -25,13 +25,13 @@ DESAFIOS DO AMBIENTE CORPORATIVO:
   │  [ Firewall ]    ← bloqueia domínios não autorizados    │
   │     │                                                   │
   │     ▼                                                   │
-  │  [ Internet ]  → Groq API / Azure OpenAI               │
+  │  [ Internet ]  → Groq API / Azure OpenAI                │
   └─────────────────────────────────────────────────────────┘
 
   Internamente:
   ┌─────────────────────────────────────────────────────────┐
-  │  Agente ──▶ [ OAuth2 Token ] ──▶ API Interna           │
-  │               (client credentials)                     │
+  │  Agente ──▶ [ OAuth2 Token ] ──▶ API Interna            │
+  │               (client credentials)                      │
   └─────────────────────────────────────────────────────────┘
 
 SOLUÇÕES:

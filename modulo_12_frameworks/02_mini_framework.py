@@ -41,7 +41,7 @@ COMPONENTES DO MINI-FRAMEWORK:
   ║     (equivale ao @tool do LangChain)              ║
   ╠═══════════════════════════════════════════════════╣
   ║  2. Guardrail — classe para validação pipeline    ║
-  ║     (equivale ao middleware do Semantic Kernel)    ║
+  ║     (equivale ao middleware do Semantic Kernel)   ║
   ╠═══════════════════════════════════════════════════╣
   ║  3. Memoria — interface plugável de memória       ║
   ║     (equivale ao Memory do LangChain)             ║

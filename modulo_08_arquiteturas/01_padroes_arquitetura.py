@@ -37,7 +37,7 @@ ARQUITETURAS COBERTAS:
 
 DIAGRAMA VISUAL — Comparação lado a lado:
 
-  ┌── FLUXO LINEAR ──┐   ┌──── ROTEADOR ────┐
+  ┌── FLUXO LINEAR ───┐   ┌──── ROTEADOR ─────┐
   │                   │   │                   │
   │ Entrada           │   │ Entrada           │
   │   ↓               │   │   ↓               │
@@ -50,19 +50,19 @@ DIAGRAMA VISUAL — Comparação lado a lado:
   │ Resposta          │
   └───────────────────┘
 
-  ┌─ PLANNER-EXECUTOR ┐   ┌── MULTIAGENTE ───┐
+  ┌─ PLANNER-EXECUTOR ─┐   ┌── MULTIAGENTE ────┐
   │                    │   │                   │
   │ Entrada            │   │ Entrada           │
   │   ↓                │   │   ↓               │
   │ LLM planeja        │   │ Agente A (lê)     │
   │   ↓                │   │   ↓               │
-  │ Executor step 1    │   │ Agente B (calcula) │
+  │ Executor step 1    │   │ Agente B (calcula)│
   │   ↓                │   │   ↓               │
-  │ Executor step 2    │   │ Agente C (valida)  │
+  │ Executor step 2    │   │ Agente C (valida) │
   │   ↓                │   │   ↓               │
-  │ Resultado          │   │ Agente D (audita)  │
+  │ Resultado          │   │ Agente D (audita) │
   └────────────────────┘   │   ↓               │
-                           │ Resposta final     │
+                           │ Resposta final    │
                            └───────────────────┘
 
 Tópicos cobertos:
@@ -375,7 +375,7 @@ def multiagente(_pergunta: str) -> ResultadoArquitetura:
 #
 # CRITÉRIOS DE DECISÃO (regra prática):
 # ┌────────────────────┬──────────────────────────────────┐
-# │ Situação           │ Arquitetura recomendada           │
+# │ Situação           │ Arquitetura recomendada          │
 # ├────────────────────┼──────────────────────────────────┤
 # │ MVP / prova de     │ Fluxo Linear                     │
 # │ conceito           │                                  │

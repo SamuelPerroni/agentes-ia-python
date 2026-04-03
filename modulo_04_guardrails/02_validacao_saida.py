@@ -89,6 +89,7 @@ class BoletoExtraido(BaseModel):
     @field_validator("status")
     @classmethod
     def validar_status(cls, v):
+        """Valida o status do boleto."""
         # Validação customizada: só aceita status conhecidos
         # Sem isso, a LLM poderia retornar "ATRASADO", "PENDENTE", etc.
         validos = ["DENTRO DO PRAZO", "VENCIDO", "VENCE HOJE"]
@@ -99,6 +100,7 @@ class BoletoExtraido(BaseModel):
     @field_validator("valor")
     @classmethod
     def validar_valor(cls, v):
+        """Valida o valor do boleto."""
         # Regra de negócio: valores acima de R$ 1.000.000 são suspeitos
         # Isso pega alucinações onde a LLM inventa valores absurdos
         if v > 1_000_000:
@@ -120,6 +122,7 @@ class CalculoMulta(BaseModel):
     @field_validator("total")
     @classmethod
     def validar_total(cls, v, info):
+        """Valida o total do cálculo de multa/juros."""
         # VALIDAÇÃO CRUZADA: total nunca pode ser menor que o valor original
         # Isso garante consistência matemática (multa e juros são sempre >= 0)
         valor_orig = info.data.get("valor_original", 0)

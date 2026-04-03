@@ -22,10 +22,10 @@ PADRÃO ROUTER:
 
   ┌──────────────────────────────────────────────────────────┐
   │                                                          │
-  │   Entrada ──▶ [ ROUTER ] ──┬──▶ Agente Boleto           │
-  │                            ├──▶ Agente NF-e             │
-  │                            ├──▶ Agente Contrato         │
-  │                            └──▶ Agente Fallback         │
+  │   Entrada ──▶ [ ROUTER ] ──┬──▶ Agente Boleto            │
+  │                            ├──▶ Agente NF-e              │
+  │                            ├──▶ Agente Contrato          │
+  │                            └──▶ Agente Fallback          │
   │                                                          │
   └──────────────────────────────────────────────────────────┘
 
@@ -45,8 +45,8 @@ ROTEAMENTO COM FALLBACK E RETRY:
   │ Router  │──────────▶│ Agente Prim. │──────────▶│ Fallback │
   └─────────┘           └──────────────┘           └──────────┘
        │                                                  │
-       │      confiança baixa?                           │
-       └──────────────────────────────────────── HITL ───┘
+       │      confiança baixa?                            │
+       └──────────────────────────────────────── HITL ────┘
 
 Tópicos cobertos:
 1. Classificação de documentos por padrões

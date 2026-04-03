@@ -47,17 +47,17 @@ console = Console()
 #   ┌──────────────────────────────────┐
 #   │  Usuário digita pergunta         │
 #   └────────────────┬─────────────────┘
-#                  │
-#                  v
+#                    │
+#                    v
 #   ┌──────────────────────────────────┐
 #   │  Envia para LLM (sem histórico)  │
 #   └────────────────┬─────────────────┘
-#                  │
-#                  v
+#                    │
+#                    v
 #   ┌──────────────────────────────────┐
 #   │  Mostra resposta ao usuário      │
 #   └────────────────┬─────────────────┘
-#                  │
+#                    │
 #           volta ao início
 #
 # PROBLEMA: cada pergunta é isolada (sem memória)!

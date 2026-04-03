@@ -22,18 +22,18 @@ ESTRATÉGIAS DE OTIMIZAÇÃO:
   ┌──────────────────────────────────────────────────────────┐
   │           PIRÂMIDE DE OTIMIZAÇÃO DE TOKENS               │
   │                                                          │
-  │              ┌───────────────┐                          │
-  │              │ Modelo certo  │  ← Use o menor adequado  │
-  │              │  por tarefa   │                          │
-  │           ┌──┴───────────────┴──┐                       │
+  │              ┌───────────────┐                           │
+  │              │ Modelo certo  │  ← Use o menor adequado   │
+  │              │  por tarefa   │                           │
+  │           ┌──┴───────────────┴──┐                        │
   │           │   Semantic cache    │  ← Reutilize respostas │
-  │           │  perguntas iguais   │                       │
-  │        ┌──┴─────────────────────┴──┐                    │
+  │           │  perguntas iguais   │                        │
+  │        ┌──┴─────────────────────┴──┐                     │
   │        │   Compressão de prompt    │  ← Remova ruído     │
-  │        │   e histórico              │                    │
-  │     ┌──┴───────────────────────────┴──┐                 │
+  │        │   e histórico             │                     │
+  │     ┌──┴───────────────────────────┴──┐                  │
   │     │   Monitoramento + alertas de $  │  ← Visibilidade  │
-  │     └────────────────────────────────┘                  │
+  │     └─────────────────────────────────┘                  │
   └──────────────────────────────────────────────────────────┘
 
 SELEÇÃO DINÂMICA DE MODELO:

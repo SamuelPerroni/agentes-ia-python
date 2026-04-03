@@ -32,11 +32,11 @@ ESTADOS DE UM ITEM NUM LOTE:
                                   │
                             erro  │
                                   ▼
-                           ┌──────────────┐  retry   ┌──────────┐
+                           ┌──────────────┐  retry    ┌──────────┐
                            │    falhou    │──────────▶│ pendente │
                            └──────────────┘           └──────────┘
                                   │
-                          max retry│
+                         max retry│
                                   ▼
                            ┌──────────────┐
                            │  abandonado  │
@@ -48,11 +48,11 @@ FLUXO DO MÓDULO:
   │  1. Carrega ou cria checkpoint (JSON)                   │
   │  2. Filtra itens JÁ processados (não reprocessa)        │
   │  3. Para cada item pendente:                            │
-  │     ├── Marca como em_andamento                        │
-  │     ├── Processa (LLM ou tool)                         │
-  │     ├── Se ok: marca concluido + salva checkpoint      │
-  │     └── Se erro: incrementa tentativas / abandona      │
-  │  4. Ao final: exibe relatório de progresso             │
+  │     ├── Marca como em_andamento                         │
+  │     ├── Processa (LLM ou tool)                          │
+  │     ├── Se ok: marca concluido + salva checkpoint       │
+  │     └── Se erro: incrementa tentativas / abandona       │
+  │  4. Ao final: exibe relatório de progresso              │
   └─────────────────────────────────────────────────────────┘
 
 Tópicos cobertos:

@@ -31,15 +31,15 @@ TÉCNICAS DEMONSTRADAS NESTE MÓDULO:
   ╔═══════════════════════════════════════════════════╗
   ║  1. STATUS SPINNER (Rich)                         ║
   ║     Mostra "Analisando entrada..." com animação   ║
-  ║     rotativa enquanto o agente processa            ║
+  ║     rotativa enquanto o agente processa           ║
   ╠═══════════════════════════════════════════════════╣
   ║  2. STREAMING DE RESPOSTA                         ║
-  ║     Texto aparece caractere por caractere          ║
-  ║     (simulando tokens chegando da API)             ║
+  ║     Texto aparece caractere por caractere         ║
+  ║     (simulando tokens chegando da API)            ║
   ╠═══════════════════════════════════════════════════╣
   ║  3. ETAPAS NOMEADAS                               ║
-  ║     Pipeline visível: entrada → guardrail →        ║
-  ║     tools → risco → resposta                       ║
+  ║     Pipeline visível: entrada → guardrail →       ║
+  ║     tools → risco → resposta                      ║
   ╚═══════════════════════════════════════════════════╝
 
 COMO FUNCIONA EM PRODUÇÃO (Groq com stream=True):

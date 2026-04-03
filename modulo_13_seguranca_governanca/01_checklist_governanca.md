@@ -1,6 +1,4 @@
-# ============================================================
 # MÓDULO 13 - CHECKLIST DE SEGURANÇA E GOVERNANÇA
-# ============================================================
 
 ## O que este módulo ensina?
 
@@ -18,6 +16,7 @@ módulos anteriores em uma lista acionável.
 > algo dá errado.
 
 **Riscos de um agente SEM governança:**
+
 - Vaza dados pessoais de clientes em logs (violação de LGPD)
 - Executa ações financeiras sem aprovação humana
 - Não tem rastreabilidade — ninguém sabe por que o agente fez X
@@ -28,7 +27,8 @@ módulos anteriores em uma lista acionável.
 
 ## 1. Segredos e Configuração
 
-### O que verificar:
+### O que verificar
+
 - [ ] **Nunca commitar `.env`** com credenciais reais
   - Use `.env.example` com valores placeholder no repositório
   - Adicione `.env` ao `.gitignore`
@@ -43,7 +43,8 @@ módulos anteriores em uma lista acionável.
   - `os.getenv("GROQ_API_KEY")` ✅
   - `api_key = "gsk_abc123..."` ❌
 
-### Onde implementamos isso no treinamento:
+### Onde implementamos isso no treinamento
+
 - `.env` e `.env.example` na raiz do projeto
 - `python-dotenv` para carregar variáveis de ambiente
 - Módulo 06: agente_boletos usa `os.getenv()` para todas as configurações
@@ -52,7 +53,8 @@ módulos anteriores em uma lista acionável.
 
 ## 2. Dados Sensíveis (LGPD / Privacidade)
 
-### O que verificar:
+### O que verificar - Dados Sensíveis
+
 - [ ] **Mascarar CPF, email e telefone** antes de salvar em logs/traces
   - Implementado no módulo 09: `redigir_texto()` em `trace_utils.py`
   - Regex detecta CPF, CNPJ, email e substitui por `[TIPO_REDACTED]`
@@ -66,13 +68,15 @@ módulos anteriores em uma lista acionável.
   - Mascare ANTES de incluir no prompt
   - Exemplo: "Cliente [CPF_REDACTED] perguntou sobre boleto..."
 
-### Onde implementamos isso no treinamento:
+### Onde implementamos isso no treinamento - Dados Sensíveis
+
 - Módulo 04: guardrails de entrada que detectam PII
 - Módulo 09: `redigir_texto()` mascara antes de persistir
 - Módulo 06: agente integra sanitização no fluxo principal
 
-### Diagrama de fluxo de dados sensíveis:
-```
+### Diagrama de fluxo de dados sensíveis
+
+```Text
 Entrada do usuário (pode conter CPF, email, etc.)
        │
        ↓
@@ -97,7 +101,8 @@ Entrada do usuário (pode conter CPF, email, etc.)
 
 ## 3. Auditoria e Rastreabilidade
 
-### O que verificar:
+### O que verificar - Auditoria
+
 - [ ] **Registrar `trace_id`** por execução
   - Cada interação do agente deve ter um identificador único
   - Implementado no módulo 09: `TraceRecorder.trace_id`
@@ -111,7 +116,8 @@ Entrada do usuário (pode conter CPF, email, etc.)
   - Quando um cliente reclama, o trace permite reconstruir o que aconteceu
   - Defina retenção mínima: 30-90 dias em produção
 
-### Onde implementamos isso no treinamento:
+### Onde implementamos isso no treinamento - Auditoria
+
 - Módulo 05: HITL com decisões humanas registradas
 - Módulo 09: TraceRecorder com trace_id, timestamp, stage, payload
 - Módulo 06: agente persiste trace JSONL por execução
@@ -120,7 +126,8 @@ Entrada do usuário (pode conter CPF, email, etc.)
 
 ## 4. Política de Deploy (Versionamento e Regressão)
 
-### O que verificar:
+### O que verificar - Deploy
+
 - [ ] **Não promover versão nova sem benchmark**
   - Módulo 07: definimos baselines mínimos (acurácia ≥ 85%, guardrails ≥ 95%)
   - Executar `pytest` antes de cada deploy (módulo 07 + diretório tests/)
@@ -133,13 +140,15 @@ Entrada do usuário (pode conter CPF, email, etc.)
 - [ ] **Ambiente de staging** antes de produção
   - Teste com dados reais (anonimizados) antes de expor ao usuário final
 
-### Onde implementamos isso no treinamento:
+### Onde implementamos isso no treinamento - Deploy
+
 - Módulo 07: benchmark_template.json com thresholds mínimos
 - Módulo 07: deploy_blockers define métricas que impedem deploy
 - Diretório tests/: testes automatizados para regressão
 
-### Fluxo de deploy seguro:
-```
+### Fluxo de deploy seguro
+
+```Text
 Código novo → Testes unitários (pytest)
                     │
                     ↓
@@ -166,7 +175,8 @@ Código novo → Testes unitários (pytest)
 
 ## 5. Resiliência e Degradação
 
-### O que verificar:
+### O que verificar - Resiliência
+
 - [ ] **Retry + backoff** configurados para chamadas à LLM
   - Implementado no módulo 11: `ClienteLLMResiliente`
   - max_retries: quantas vezes tentar antes de desistir
@@ -179,7 +189,8 @@ Código novo → Testes unitários (pytest)
 - [ ] **Monitorar taxa de fallback** como métrica operacional
   - < 1%: normal | 1-5%: atenção | > 5%: investigar
 
-### Onde implementamos isso no treinamento:
+### Onde implementamos isso no treinamento - Resiliência
+
 - Módulo 11: ClienteLLMResiliente com retry, backoff e fallback
 - Módulo 06: agente integra cliente resiliente no fluxo
 
@@ -192,22 +203,27 @@ Antes de colocar QUALQUER agente de IA em produção, responda estas
 PRONTO para produção.
 
 ### 1️⃣ Que dados pessoais entram no fluxo?
+
 > Liste todos: CPF, email, nome, endereço, dados financeiros.
 > Para cada um, defina: é necessário? É mascarado? Onde é armazenado?
 
 ### 2️⃣ O que fica salvo em log?
+
 > Detalhe: quais campos são persistidos? Por quanto tempo?
 > Há PII nos logs? Se sim, está mascarado?
 
 ### 3️⃣ Como uma decisão humana é auditada?
+
 > Quando o HITL é acionado, quem decide? A decisão é registrada?
 > É possível reconstituir a cadeia de eventos depois?
 
 ### 4️⃣ Qual métrica bloqueia deploy?
+
 > Ex: "Se acurácia de cálculos < 85%, deploy é bloqueado."
 > Defina no benchmark_template.json (módulo 07).
 
 ### 5️⃣ Como o sistema degrada quando a LLM falha?
+
 > O sistema para completamente? Tem fallback? Tem mensagem amigável?
 > Quantas retentativas? Qual o timeout máximo?
 
@@ -215,30 +231,30 @@ PRONTO para produção.
 
 ## Resumo visual — Camadas de Proteção
 
-```
-┌──────────────────────────────────────────────────────────┐
-│                    AGENTE EM PRODUÇÃO                      │
-├──────────────────────────────────────────────────────────┤
+```Text
+┌───────────────────────────────────────────────────────────┐
+│                    AGENTE EM PRODUÇÃO                     │
+├───────────────────────────────────────────────────────────┤
 │                                                           │
-│  Camada 1: ENTRADA                                       │
-│  └── Guardrails (módulo 04) + Mascaramento PII           │
+│  Camada 1: ENTRADA                                        │
+│  └── Guardrails (módulo 04) + Mascaramento PII            │
 │                                                           │
-│  Camada 2: PROCESSAMENTO                                 │
+│  Camada 2: PROCESSAMENTO                                  │
 │  └── Resiliência (módulo 11) + Observabilidade (módulo 09)│
 │                                                           │
-│  Camada 3: DECISÃO                                       │
-│  └── HITL (módulo 05) para operações de alto risco       │
+│  Camada 3: DECISÃO                                        │
+│  └── HITL (módulo 05) para operações de alto risco        │
 │                                                           │
-│  Camada 4: SAÍDA                                         │
-│  └── Validação de resposta + Streaming (módulo 14)       │
+│  Camada 4: SAÍDA                                          │
+│  └── Validação de resposta + Streaming (módulo 14)        │
 │                                                           │
-│  Camada 5: AVALIAÇÃO                                     │
-│  └── Benchmark (módulo 07) + Policy de deploy            │
+│  Camada 5: AVALIAÇÃO                                      │
+│  └── Benchmark (módulo 07) + Policy de deploy             │
 │                                                           │
-│  Camada 6: AUDITORIA                                     │
-│  └── Traces JSONL + Versionamento de prompts             │
+│  Camada 6: AUDITORIA                                      │
+│  └── Traces JSONL + Versionamento de prompts              │
 │                                                           │
-└──────────────────────────────────────────────────────────┘
+└───────────────────────────────────────────────────────────┘
 ```
 
 ## Exercício sugerido

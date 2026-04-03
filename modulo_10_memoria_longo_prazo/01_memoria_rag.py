@@ -7,7 +7,7 @@ e implementamos uma memória consultável de políticas e fatos.
 
 CONCEITO CHAVE — Os Dois Tipos de Memória:
 ┌─────────────────────────────────────────────────────────┐
-│                MEMÓRIA DO AGENTE                         │
+│                MEMÓRIA DO AGENTE                        │
 ├────────────────────────┬────────────────────────────────┤
 │   CURTO PRAZO          │   LONGO PRAZO (este módulo)    │
 │                        │                                │

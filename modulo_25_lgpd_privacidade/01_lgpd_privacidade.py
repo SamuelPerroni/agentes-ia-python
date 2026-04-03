@@ -19,16 +19,16 @@ RISCOS ESPECÍFICOS EM AGENTES DE IA:
 4. Outputs do agente com dados além do necessário
 
 LGPD — PRINCÍPIOS RELEVANTES PARA AGENTES:
-┌──────────────────────────────────────────────────────────┐
-│  Princípio           Implementação no agente             │
-│  ─────────────────────────────────────────────────────── │
+┌───────────────────────────────────────────────────────────┐
+│  Princípio           Implementação no agente              │
+│  ───────────────────────────────────────────────────────  │
 │  Finalidade          Prompt especifica uso restrito       │
 │  Necessidade         Anonimize antes de enviar ao LLM     │
 │  Segurança           Criptografe dados em repouso/trânsito│
 │  Prevenção           Guardrail bloqueia PII no output     │
 │  Transparência       Log de finalidade da coleta          │
 │  Não discriminação   Testes de viés nos outputs           │
-└──────────────────────────────────────────────────────────┘
+└───────────────────────────────────────────────────────────┘
 
 FLUXO DE PRIVACIDADE:
 

@@ -55,12 +55,12 @@ DIAGRAMA — Fluxo de Streaming Real:
   ║       ↓                                            ║
   ║  API Groq começa a gerar tokens                    ║
   ║       │                                            ║
-  ║       ├─→ chunk 1: "O "    → print("O ", end="")  ║
+  ║       ├─→ chunk 1: "O "    → print("O ", end="")   ║
   ║       ├─→ chunk 2: "valor" → print("valor", end="")║
-  ║       ├─→ chunk 3: " do"   → print(" do", end="") ║
-  ║       ├─→ chunk 4: " bol"  → print(" bol", end="")║
+  ║       ├─→ chunk 3: " do"   → print(" do", end="")  ║
+  ║       ├─→ chunk 4: " bol"  → print(" bol", end="") ║
   ║       ├─→ ...                                      ║
-  ║       └─→ chunk N: "."     → print(".", end="")   ║
+  ║       └─→ chunk N: "."     → print(".", end="")    ║
   ║       │                                            ║
   ║       ↓                                            ║
   ║  stream.stop_reason = "stop"                       ║

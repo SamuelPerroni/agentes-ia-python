@@ -27,7 +27,7 @@ ARQUITETURA — Text-to-SQL SEGURO:
   │  [ Schema Loader ] → injeta DDL no prompt                │
   │       │                                                  │
   │       ▼                                                  │
-  │  [ LLM ] → gera SQL candidato                           │
+  │  [ LLM ] → gera SQL candidato                            │
   │       │                                                  │
   │       ▼                                                  │
   │  [ Validador SQL ] → bloqueia DROP/DELETE/INSERT         │

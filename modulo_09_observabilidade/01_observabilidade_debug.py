@@ -34,7 +34,7 @@ cada "consulta" (execução) do agente tem um prontuário completo.
 
 FLUXO DEMONSTRADO:
   ┌────────────────────────────────────────────────────┐
-  │               Demo de Observabilidade               │
+  │               Demo de Observabilidade              │
   ├────────────────────────────────────────────────────┤
   │ 1. Cria TraceRecorder (trace_id gerado)            │
   │ 2. log_event("entrada", {mensagem com CPF})        │

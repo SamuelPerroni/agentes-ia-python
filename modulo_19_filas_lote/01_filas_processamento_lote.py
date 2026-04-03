@@ -26,18 +26,18 @@ PADRÕES COBERTOS:
 ARQUITETURA DE FILAS PARA AGENTES:
 
   ┌──────────────────────────────────────────────────────────┐
-  │  Produtores                  Consumidores               │
-  │  (fontes de dados)           (agente workers)           │
+  │  Produtores                  Consumidores                │
+  │  (fontes de dados)           (agente workers)            │
   │                                                          │
-  │  E-mail ──▶ ┌──────────────┐                           │
-  │  API    ──▶ │ Fila         │ ──▶ Worker 1 ──▶ LLM      │
-  │  Portal ──▶ │ Prioridade   │ ──▶ Worker 2 ──▶ LLM      │
-  │  Upload ──▶ │ Alta:Urgente │ ──▶ Worker 3 ──▶ LLM      │
-  │             │ Média:Normal │                  │         │
-  │             │ Baixa:Batch  │              Resultado     │
-  │             └──────────────┘                  │         │
-  │                    │                          ▼         │
-  │              Itens falhos ──▶ Dead Letter Queue         │
+  │  E-mail ──▶ ┌──────────────┐                             │
+  │  API    ──▶ │ Fila         │ ──▶ Worker 1 ──▶ LLM        │
+  │  Portal ──▶ │ Prioridade   │ ──▶ Worker 2 ──▶ LLM        │
+  │  Upload ──▶ │ Alta:Urgente │ ──▶ Worker 3 ──▶ LLM        │
+  │             │ Média:Normal │                  │          │
+  │             │ Baixa:Batch  │              Resultado      │
+  │             └──────────────┘                  │          │
+  │                    │                          ▼          │
+  │              Itens falhos ──▶ Dead Letter Queue          │
   └──────────────────────────────────────────────────────────┘
 
 FILAS EM PRODUÇÃO:

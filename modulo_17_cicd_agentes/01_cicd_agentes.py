@@ -30,7 +30,7 @@ SOLUÇÃO — PIPELINE DE CI/CD PARA AGENTES:
   ┌─────────────────────────────────────────────────────────┐
   │  Desenvolvedor                                          │
   │       │                                                 │
-  │  Edita prompt v2.0  ─────────────────┐                 │
+  │  Edita prompt v2.0  ─────────────────┐                  │
   │       │                              │                  │
   │       ▼                              ▼                  │
   │  Cria casos de teste         Registra nova versão       │

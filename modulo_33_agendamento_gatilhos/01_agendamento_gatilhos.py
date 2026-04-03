@@ -16,16 +16,16 @@ TIPOS DE GATILHO:
 
   ┌──────────────────────────────────────────────────────────┐
   │  CRON (tempo)                                            │
-  │  └── "todo dia às 8h": extrai boletos do portal         │
-  │  └── "toda sexta às 17h": fecha conciliação da semana   │
+  │  └── "todo dia às 8h": extrai boletos do portal          │
+  │  └── "toda sexta às 17h": fecha conciliação da semana    │
   │                                                          │
-  │  EVENTO (fila / mensagem)                               │
-  │  └── "nova NF-e no S3": processa imediatamente          │
-  │  └── "boleto criado no ERP": agenda pagamento           │
+  │  EVENTO (fila / mensagem)                                │
+  │  └── "nova NF-e no S3": processa imediatamente           │
+  │  └── "boleto criado no ERP": agenda pagamento            │
   │                                                          │
   │  WEBHOOK (HTTP push)                                     │
-  │  └── ERP chama POST /webhook/boleto quando cria         │
-  │  └── Banco chama POST /webhook/pagamento quando baixa   │
+  │  └── ERP chama POST /webhook/boleto quando cria          │
+  │  └── Banco chama POST /webhook/pagamento quando baixa    │
   └──────────────────────────────────────────────────────────┘
 
 PADRÃO: DISPATCHER DE GATILHOS

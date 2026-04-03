@@ -27,8 +27,8 @@ QUANDO USAR HITL:
 NÍVEIS DE RISCO (implementados aqui):
   ┌──────────────────────────────────────────────┐
   │ BAIXO   → Automático, sem intervenção        │
-  │ MÉDIO   → Executa + Notifica humano        │
-  │ ALTO    → PARA e pede aprovação humana     │
+  │ MÉDIO   → Executa + Notifica humano          │
+  │ ALTO    → PARA e pede aprovação humana       │
   │ CRÍTICO → Aprovação + Verificação extra      │
   └──────────────────────────────────────────────┘
 ============================================================

@@ -15,14 +15,14 @@ dos casos e escala para revisão humana apenas as exceções.
 TIPOS DE DIVERGÊNCIA:
 
   ┌──────────────────────────────────────────────────────────┐
-  │  Tipo               │ Descrição                         │
-  │─────────────────────┼───────────────────────────────────│
-  │  DUPLICIDADE        │ Mesmo lançamento 2x no ERP        │
-  │  AUSENTE_ERP        │ Débito no banco sem lançamento    │
-  │  AUSENTE_BANCO      │ Lançamento no ERP sem débito      │
-  │  DIFERENCA_VALOR    │ Valores não batem                 │
-  │  DIFERENCA_DATA     │ Datas diferentes (D+1, D+2)       │
-  │  OK                 │ Conciliado                        │
+  │  Tipo               │ Descrição                          │
+  │─────────────────────┼────────────────────────────────────│
+  │  DUPLICIDADE        │ Mesmo lançamento 2x no ERP         │
+  │  AUSENTE_ERP        │ Débito no banco sem lançamento     │
+  │  AUSENTE_BANCO      │ Lançamento no ERP sem débito       │
+  │  DIFERENCA_VALOR    │ Valores não batem                  │
+  │  DIFERENCA_DATA     │ Datas diferentes (D+1, D+2)        │
+  │  OK                 │ Conciliado                         │
   └──────────────────────────────────────────────────────────┘
 
 FLUXO DO AGENTE:

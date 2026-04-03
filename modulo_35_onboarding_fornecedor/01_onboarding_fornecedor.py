@@ -19,19 +19,19 @@ PIPELINE DE VALIDAÇÃO:
   │  Solicitação de Cadastro                                 │
   │       │                                                  │
   │       ▼                                                  │
-  │  [1] Validar CNPJ (formato + dígito verificador)        │
+  │  [1] Validar CNPJ (formato + dígito verificador)         │
   │       │                                                  │
   │       ▼                                                  │
   │  [2] Consultar Receita Federal (situação cadastral)      │
-  │       │  IRREGULAR → REJEITAR                           │
+  │       │  IRREGULAR → REJEITAR                            │
   │       ▼                                                  │
-  │  [3] Verificar Lista de Sanções (CEIS/CNEP/OFAC)        │
-  │       │  ENCONTRADO → REJEITAR                          │
+  │  [3] Verificar Lista de Sanções (CEIS/CNEP/OFAC)         │
+  │       │  ENCONTRADO → REJEITAR                           │
   │       ▼                                                  │
-  │  [4] Verificar Certidões (CND, FGTS, Trabalhista)       │
-  │       │  NEGATIVA → APROVAÇÃO CONDICIONAL               │
+  │  [4] Verificar Certidões (CND, FGTS, Trabalhista)        │
+  │       │  NEGATIVA → APROVAÇÃO CONDICIONAL                │
   │       ▼                                                  │
-  │  [5] Decisão Final → APROVADO / CONDICIONAL / REJEITADO │
+  │  [5] Decisão Final → APROVADO / CONDICIONAL / REJEITADO  │
   │       │                                                  │
   │       ▼                                                  │
   │  [6] LLM gera parecer em linguagem natural               │

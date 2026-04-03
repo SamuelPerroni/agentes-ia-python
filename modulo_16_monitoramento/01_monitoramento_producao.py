@@ -28,7 +28,7 @@ MÉTRICAS ESSENCIAIS PARA AGENTES DE IA:
   ┌─────────────────────────────────────────────────────┐
   │  LATÊNCIA                                           │
   │  p50 / p95 / p99 por etapa do agente                │
-  │  (entrada → guardrail → LLM → tools → saída)       │
+  │  (entrada → guardrail → LLM → tools → saída)        │
   ├─────────────────────────────────────────────────────┤
   │  TAXA DE SUCESSO                                    │
   │  % de execuções sem erro / com guardrail bloqueado  │

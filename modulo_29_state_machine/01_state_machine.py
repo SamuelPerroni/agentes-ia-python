@@ -22,7 +22,7 @@ ESTADOS DO FLUXO DE APROVAÇÃO DE PAGAMENTO:
 
   ┌─────────────────────────────────────────────────────────┐
   │                                                         │
-  │   RASCUNHO ──▶ PENDENTE ──▶ EM_ANÁLISE                 │
+  │   RASCUNHO ──▶ PENDENTE ──▶ EM_ANÁLISE                  │
   │                    │            │                       │
   │                    │       ┌────┴────┐                  │
   │                    │       ▼         ▼                  │

@@ -25,14 +25,14 @@ ARQUITETURA:
   │       │  POST /processar-boleto                        │
   │       ▼                                                │
   │  [ FastAPI App ]                                       │
-  │  ┌─────────────────────────────────────────────────┐  │
-  │  │  POST /processar-boleto  → AgenteBoletosAPI     │  │
-  │  │  POST /processar-lote    → processa lista       │  │
-  │  │  GET  /saude             → health check         │  │
-  │  │  GET  /metricas          → KPIs do agente       │  │
-  │  └─────────────────────────────────────────────────┘  │
+  │  ┌─────────────────────────────────────────────────┐   │
+  │  │  POST /processar-boleto  → AgenteBoletosAPI     │   │
+  │  │  POST /processar-lote    → processa lista       │   │
+  │  │  GET  /saude             → health check         │   │
+  │  │  GET  /metricas          → KPIs do agente       │   │
+  │  └─────────────────────────────────────────────────┘   │
   │       │                                                │
-  │  [ Agente IA ] → Groq → resposta JSON                 │
+  │  [ Agente IA ] → Groq → resposta JSON                  │
   └────────────────────────────────────────────────────────┘
 
 ENDPOINTS:
