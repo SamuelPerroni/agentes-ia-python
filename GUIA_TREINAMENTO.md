@@ -902,6 +902,129 @@ Fechar o loop de automação notificando as pessoas certas via e-mail, Teams e S
 
 ---
 
+## MÓDULO 32: Agente como Microsserviço REST (20 min)
+
+### Objetivo — FastAPI
+
+Expor o agente como endpoint HTTP para que ERP, RPA e
+dashboards possam invocá-lo diretamente sem instalar Python.
+
+### Arquivos — FastAPI
+
+- `modulo_32_microsservico_fastapi/01_microsservico_fastapi.py`
+
+### O que demonstrar — FastAPI
+
+1. `ServidorAgenteSimulado` espelha rotas FastAPI reais
+2. Health check (`GET /saude`) e métricas (`GET /metricas`)
+3. Processamento unitário e em lote com latência medida
+4. Como adaptar para FastAPI real (código comentado no Panel)
+
+---
+
+## MÓDULO 33: Agendamento e Gatilhos de Processo (20 min)
+
+### Objetivo — Gatilhos
+
+Mostrar como processos APA são iniciados: cron, fila de
+eventos, webhook e acionamento manual.
+
+### Arquivos — Gatilhos
+
+- `modulo_33_agendamento_gatilhos/01_agendamento_gatilhos.py`
+
+### O que demonstrar — Gatilhos
+
+1. `TipoGatilho` enum: CRON, EVENTO, WEBHOOK, MANUAL
+2. `GatilhoDispatcher` registra e dispara handlers
+3. Validação HMAC-SHA256 em webhooks (segurança)
+4. `SchedulerSimulado` espelha APScheduler real
+
+---
+
+## MÓDULO 34: Reconciliação Financeira Automática (20 min)
+
+### Objetivo — Reconciliação
+
+Cruzar extrato bancário com ERP e classificar divergências
+automaticamente, reduzindo trabalho contábil manual.
+
+### Arquivos — Reconciliação
+
+- `modulo_34_reconciliacao/01_reconciliacao.py`
+
+### O que demonstrar — Reconciliação
+
+1. `EngineConciliacao` detecta lançamentos duplicados no ERP
+2. Matching com tolerância de ±1 dia e ±R$0,05
+3. `TipoDivergencia`: OK, DUPLICIDADE, AUSENTE_ERP, etc.
+4. `gerar_sumario_llm` simula narrativa executiva de IA
+
+---
+
+## MÓDULO 35: Onboarding Automatizado de Fornecedores (20 min)
+
+### Objetivo — Onboarding
+
+Pipeline multi-etapa que valida CNPJ, consulta Receita
+Federal, lista de sanções e certidões antes de aprovar
+um fornecedor.
+
+### Arquivos — Onboarding
+
+- `modulo_35_onboarding_fornecedor/01_onboarding_fornecedor.py`
+
+### O que demonstrar — Onboarding
+
+1. `validar_cnpj` com algoritmo módulo-11 completo
+2. Pipeline sequencial com early-exit em BLOQUEADO
+3. Decisão APROVADO / CONDICIONAL / REJEITADO com justificativa
+4. Simulação de APIs externas (RF, sanções, certidões)
+
+---
+
+## MÓDULO 36: KPIs e Relatório de ROI do Processo (20 min)
+
+### Objetivo — KPIs e ROI
+
+Demonstrar como medir e comunicar o valor de APA:
+documentos processados, taxa de erro, horas economizadas
+e retorno financeiro.
+
+### Arquivos — KPIs
+
+- `modulo_36_kpis_roi/01_kpis_roi.py`
+
+### O que demonstrar — KPIs
+
+1. `ColetorKPI` acumula execuções e calcula stats em tempo real
+2. `calcular_roi` — fórmula: horas × custo_hora − custo_APA
+3. `documentos_baixa_confianca` identifica casos de risco
+4. `exportar_dict` para integração com Prometheus/API
+
+---
+
+## MÓDULO 37: Escalação com SLA e Revisão Humana Avançada (20 min)
+
+### Objetivo — Escalação com SLA
+
+Gerenciar exceções com prazo: quando o analista não age
+dentro do SLA, o caso sobe automaticamente para gestor
+e depois para diretoria, com notificações em cada nível.
+
+### Arquivos — Escalação SLA
+
+- `modulo_37_escalacao_sla/01_escalacao_sla.py`
+
+### O que demonstrar — Escalação SLA
+
+1. `SLA_HORAS` configura prazo por nível de escalação
+2. `GerenciadorSLA.verificar_slas` escalona automaticamente
+3. `resolver_caso` registra ação humana e fecha o caso
+4. `exibir_dashboard` mostra status colorido de todos os casos
+
+---
+
 ## 🎯 Checklist Final
 
 Ao final do treinamento, os participantes devem ser capazes de:
@@ -939,6 +1062,12 @@ Ao final do treinamento, os participantes devem ser capazes de:
 - [ ] Configurar agente em ambiente corporativo (proxy, SSL, OAuth2)
 - [ ] Integrar notificações de e-mail, Teams e Slack no pipeline
 - [ ] Orquestrar múltiplos agentes com handoff e trilha de auditoria
+- [ ] Expor agente como endpoint REST (FastAPI) para integração com ERP/RPA
+- [ ] Configurar gatilhos de processo: cron, evento e webhook com validação HMAC
+- [ ] Automatizar conciliação bancária com classificação de divergências
+- [ ] Validar fornecedores com pipeline multi-etapa (CNPJ, RF, sanções, certidões)
+- [ ] Medir KPIs e calcular ROI do processo automatizado
+- [ ] Implementar escalação com SLA para exceções não resolvidas
 
 ---
 
@@ -1082,6 +1211,24 @@ python modulo_30_ambiente_corporativo/01_ambiente_corporativo.py
 
 # Módulo 31
 python modulo_31_notificacoes/01_notificacoes.py
+
+# Módulo 32
+python modulo_32_microsservico_fastapi/01_microsservico_fastapi.py
+
+# Módulo 33
+python modulo_33_agendamento_gatilhos/01_agendamento_gatilhos.py
+
+# Módulo 34
+python modulo_34_reconciliacao/01_reconciliacao.py
+
+# Módulo 35
+python modulo_35_onboarding_fornecedor/01_onboarding_fornecedor.py
+
+# Módulo 36
+python modulo_36_kpis_roi/01_kpis_roi.py
+
+# Módulo 37
+python modulo_37_escalacao_sla/01_escalacao_sla.py
 
 # Testes automatizados
 pytest
