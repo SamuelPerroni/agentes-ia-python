@@ -86,24 +86,24 @@ Usamos a API gratuita do **Groq** com o modelo **Llama 3.3 70B**.
 
 Além da trilha base (módulos 01–14), o treinamento inclui camadas progressivas de maturidade:
 
-**Camada 2 — Integração e Qualidade (módulos 15–20)**
+### Camada 2 — Integração e Qualidade (módulos 15–20)
 
 - PDF/OCR, integração REST com OAuth 2, métricas e SLA em produção
 - Versionamento de prompts, checkpoints, processamento em lote
 
-**Camada 3 — Operação Avançada (módulos 21–25)**
+### Camada 3 — Operação Avançada (módulos 21–25)
 
 - Controle de custos de tokens, testes com LLM mockada (custo $0)
 - Context window, roteamento dinâmico, privacidade e LGPD
 
-**Camada 4 — APA Corporativa (módulos 26–31)**
+### Camada 4 — APA Corporativa (módulos 26–31)
 
 - Browser automation para sistemas legados, Text-to-SQL
 - Documentos multimodais, state machine auditável
 - Configuração em ambiente corporativo (proxy, SSL, OAuth2)
 - Notificações via e-mail, Teams e Slack
 
-**Camada 5 — APA em Produção (módulos 32–37)**
+### Camada 5 — APA em Produção (módulos 32–37)
 
 - Agente exposto como microsserviço REST (FastAPI)
 - Gatilhos automáticos: cron, fila de eventos, webhook (HMAC)
