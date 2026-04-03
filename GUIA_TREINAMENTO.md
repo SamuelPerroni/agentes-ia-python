@@ -576,6 +576,123 @@ Melhorar a UX do agente no terminal e tornar o fluxo visível ao usuário.
 
 ---
 
+---
+
+## MÓDULO 15: Integração com Sistemas Reais (20 min)
+
+### Objetivo — Integração
+
+Conectar o agente a fontes de dados corporativas reais: PDFs, APIs REST autenticadas com OAuth 2 e automação web.
+
+### Arquivos — Integração
+
+- `modulo_15_integracao_sistemas/01_integracao_sistemas_reais.py`
+
+### O que demonstrar — Integração
+
+1. Extração de texto de PDF com `pdfplumber` (com fallback simulado)
+2. Gerenciamento de token OAuth 2 com cache e renovação automática
+3. Cliente HTTP autenticado (`GET` e `POST`)
+4. Stub de automação web com Playwright
+
+---
+
+## MÓDULO 16: Monitoramento em Produção (20 min)
+
+### Objetivo — Monitoramento
+
+Coletar e visualizar métricas de execução do agente (latência, taxa de sucesso, percentis p50/p95/p99) e definir SLAs com alertas.
+
+### Arquivos — Monitoramento
+
+- `modulo_16_monitoramento/01_monitoramento_producao.py`
+
+### O que demonstrar — Monitoramento
+
+1. Coleta estruturada de métricas por execução
+2. Cálculo de percentis e verificação de SLAs
+3. Dashboard Rich com tabelas e painéis coloridos
+4. Referência à integração com Langfuse
+
+---
+
+## MÓDULO 17: CI/CD para Agentes (20 min)
+
+### Objetivo — CI/CD
+
+Versionar prompts, executar golden dataset automaticamente e fazer shadow testing antes de promover uma nova versão de prompt para produção.
+
+### Arquivos — CI/CD
+
+- `modulo_17_cicd_agentes/01_cicd_agentes.py`
+
+### O que demonstrar — CI/CD
+
+1. Registro de versões de prompt com persistência JSON
+2. Golden dataset com 5 casos de teste
+3. Suite de regressão automatizada
+4. Shadow test comparando versão ativa vs. candidata
+5. Decisão de promoção ou bloqueio baseada em taxa de sucesso
+
+---
+
+## MÓDULO 18: Tarefas Longas com Checkpoints (20 min)
+
+### Objetivo — Checkpoints
+
+Processar lotes grandes com salvamento de estado intermediário, permitindo retomada após falhas ou interrupções.
+
+### Arquivos — Checkpoints
+
+- `modulo_18_tarefas_longas/01_tarefas_longas_checkpoints.py`
+
+### O que demonstrar — Checkpoints
+
+1. Estrutura de estado por item (`pendente` → `em_andamento` → `concluido` / `falhou`)
+2. Persistência JSON automática após cada transição
+3. Retomada sem reprocessar itens já concluídos
+4. Barra de progresso Rich mostrando apenas itens pendentes reais
+
+---
+
+## MÓDULO 19: Filas e Processamento em Lote (20 min)
+
+### Objetivo — Filas
+
+Implementar fila de prioridade thread-safe com rate limiting e workers paralelos para processamento em lote de alto volume.
+
+### Arquivos — Filas
+
+- `modulo_19_filas_lote/01_filas_processamento_lote.py`
+
+### O que demonstrar — Filas
+
+1. Fila de prioridade com `heapq` e `threading.Lock`
+2. Rate limiter por token bucket
+3. Workers paralelos com `ThreadPoolExecutor`
+4. Dead Letter Queue (DLQ) para itens que esgotam tentativas
+
+---
+
+## MÓDULO 20: Orquestração Avançada Multi-Agente (20 min)
+
+### Objetivo — Orquestração Avançada
+
+Coordenar múltiplos agentes especialistas com um supervisor, passando contexto estruturado via handoff e mantendo trilha de auditoria completa.
+
+### Arquivos — Orquestração Avançada
+
+- `modulo_20_orquestracao_avancada/01_orquestracao_avancada.py`
+
+### O que demonstrar — Orquestração Avancada
+
+1. Padrão Supervisor + Workers com `WorkerBase` abstrato
+2. `ContextoHandoff` que acumula resultados e histórico de decisões
+3. Workers sequenciais: extração → cálculo → compliance
+4. Tratamento de falhas individuais sem interromper o pipeline
+
+---
+
 ## 🎯 Checklist Final
 
 Ao final do treinamento, os participantes devem ser capazes de:
@@ -596,6 +713,12 @@ Ao final do treinamento, os participantes devem ser capazes de:
 - [ ] Adicionar retry, fallback e degradação graciosa
 - [ ] Executar testes automatizados com `pytest`
 - [ ] Aplicar checklist de segurança e governança antes de produção
+- [ ] Integrar o agente com PDFs e APIs REST autenticadas (OAuth 2)
+- [ ] Coletar métricas e verificar SLAs em produção
+- [ ] Versionar prompts e executar suíte de regressão automática
+- [ ] Implementar processamento com checkpoints e retomada
+- [ ] Processar lotes em paralelo com fila de prioridade e DLQ
+- [ ] Orquestrar múltiplos agentes com handoff e trilha de auditoria
 
 ---
 
@@ -688,6 +811,24 @@ python modulo_11_resiliencia/01_resiliencia_operacional.py
 
 # Módulo 14
 python modulo_14_streaming_ux/01_streaming_console.py
+
+# Módulo 15
+python modulo_15_integracao_sistemas/01_integracao_sistemas_reais.py
+
+# Módulo 16
+python modulo_16_monitoramento/01_monitoramento_producao.py
+
+# Módulo 17
+python modulo_17_cicd_agentes/01_cicd_agentes.py
+
+# Módulo 18
+python modulo_18_tarefas_longas/01_tarefas_longas_checkpoints.py
+
+# Módulo 19
+python modulo_19_filas_lote/01_filas_processamento_lote.py
+
+# Módulo 20
+python modulo_20_orquestracao_avancada/01_orquestracao_avancada.py
 
 # Testes automatizados
 pytest
