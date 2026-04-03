@@ -693,6 +693,101 @@ Coordenar múltiplos agentes especialistas com um supervisor, passando contexto 
 
 ---
 
+## MÓDULO 21: Gestão de Custos e Otimização de Tokens (20 min)
+
+### Objetivo — Custos
+
+Monitorar o consumo de tokens, estimar custos por chamada, selecionar dinamicamente o modelo mais econômico e usar cache semântico para eliminar chamadas repetidas.
+
+### Arquivos — Custos
+
+- `modulo_21_custos_tokens/01_custos_tokens.py`
+
+### O que demonstrar — Custos
+
+1. Estimativa de custo por chamada com `estimar_custo_usd`
+2. `RastreadorCusto` com alertas de orçamento e relatório
+3. `CacheSemantico` via hash SHA-256 (cache HIT/MISS)
+4. Compressão de histórico de conversação com `comprimir_historico`
+
+---
+
+## MÓDULO 22: Testes de Agentes com LLM Mockada (20 min)
+
+### Objetivo — Testes Mock
+
+Escrever testes unitários para agentes sem realizar chamadas reais à API — custo $0, execução em milissegundos.
+
+### Arquivos — Testes Mock
+
+- `modulo_22_testes_mock/01_testes_mock.py`
+
+### O que demonstrar — Testes Mock
+
+1. Injeção de dependência do cliente Groq via construtor
+2. `MagicMock` com resposta JSON controlada
+3. Teste de guardrail de entrada sem chamar a API
+4. Suite de 7 testes rodando em < 50 ms, custo $0
+
+---
+
+## MÓDULO 23: Gerenciamento de Janela de Contexto (20 min)
+
+### Objetivo — Contexto Longo
+
+Processar documentos maiores que a janela de contexto usando chunking, sliding window e Map-Reduce, mantendo histórico sem exceder o limite de tokens.
+
+### Arquivos — Contexto Longo
+
+- `modulo_23_contexto_longo/01_contexto_longo.py`
+
+### O que demonstrar — Contexto Longo
+
+1. Heurística de estimativa de tokens (4 chars/token)
+2. Chunking com overlap configurável
+3. Sliding window para documentos maiores que o contexto
+4. Map-Reduce para extração em lote e consolidação
+
+---
+
+## MÓDULO 24: Roteamento Dinâmico de Tarefas (20 min)
+
+### Objetivo — Roteamento
+
+Implementar o padrão Router: classificar automaticamente o tipo de documento e despachar para o agente especialista mais adequado com trilha de auditoria.
+
+### Arquivos — Roteamento
+
+- `modulo_24_roteamento/01_roteamento_dinamico.py`
+
+### O que demonstrar — Roteamento
+
+1. Plugin pattern para registrar agentes especialistas
+2. Score de confiança baseado em padrões regex
+3. Fallback automático para agente genérico
+4. Trilha de auditoria das decisões de roteamento
+
+---
+
+## MÓDULO 25: LGPD e Privacidade de Dados (20 min)
+
+### Objetivo — LGPD
+
+Aplicar controles de privacidade LGPD no pipeline do agente: detectar dados pessoais, anonimizar antes de enviar ao LLM, re-identificar na resposta e manter log de auditoria sem dados reais.
+
+### Arquivos — LGPD
+
+- `modulo_25_lgpd_privacidade/01_lgpd_privacidade.py`
+
+### O que demonstrar — LGPD
+
+1. Detecção de PII: CPF, CNPJ, e-mail, telefone, cartão, CEP
+2. Anonimização reversível antes de enviar ao LLM
+3. Guardrail de saída que remove PII residual
+4. Log de auditoria LGPD sem dados pessoais reais
+
+---
+
 ## 🎯 Checklist Final
 
 Ao final do treinamento, os participantes devem ser capazes de:
@@ -718,6 +813,11 @@ Ao final do treinamento, os participantes devem ser capazes de:
 - [ ] Versionar prompts e executar suíte de regressão automática
 - [ ] Implementar processamento com checkpoints e retomada
 - [ ] Processar lotes em paralelo com fila de prioridade e DLQ
+- [ ] Estimar e controlar custos de tokens por execução
+- [ ] Escrever testes de agente com LLM mockada (custo $0)
+- [ ] Aplicar chunking/sliding window para documentos longos
+- [ ] Implementar roteamento dinâmico para múltiplos tipos de documento
+- [ ] Aplicar controles de privacidade LGPD no pipeline do agente
 - [ ] Orquestrar múltiplos agentes com handoff e trilha de auditoria
 
 ---
@@ -829,6 +929,21 @@ python modulo_19_filas_lote/01_filas_processamento_lote.py
 
 # Módulo 20
 python modulo_20_orquestracao_avancada/01_orquestracao_avancada.py
+
+# Módulo 21
+python modulo_21_custos_tokens/01_custos_tokens.py
+
+# Módulo 22
+python modulo_22_testes_mock/01_testes_mock.py
+
+# Módulo 23
+python modulo_23_contexto_longo/01_contexto_longo.py
+
+# Módulo 24
+python modulo_24_roteamento/01_roteamento_dinamico.py
+
+# Módulo 25
+python modulo_25_lgpd_privacidade/01_lgpd_privacidade.py
 
 # Testes automatizados
 pytest
