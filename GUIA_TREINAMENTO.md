@@ -6,10 +6,11 @@
 
 | Item | Detalhe |
 | ------ | --------- |
-| **Duração estimada** | 6 a 8 horas |
+| **Duração estimada** | 10 a 14 horas |
 | **Nível** | Intermediário (requer Python básico) |
 | **LLM** | Groq API (gratuita) + Llama 3.3 70B |
 | **Projeto Final** | Agente de Leitura de Boletos Bancários |
+| **Módulos** | 37 (trilha base + camadas de maturidade APA) |
 
 ### Objetivo
 
@@ -21,10 +22,14 @@ Construir, **na prática**, um agente de IA completo em Python, evoluindo do con
 - Engenharia de prompts para agentes
 - Implementação de tool calling
 - Proteção com guardrails (entrada e saída)
-- Camada human-in-the-loop (HITL)
+- Camada human-in-the-loop (HITL) com escalação por SLA
 - Avaliação de qualidade do agente
 - Observabilidade, resiliência e governança
 - Memória de longo prazo e padrões arquiteturais
+- Exposição do agente como microsserviço REST (FastAPI)
+- Gatilhos automáticos: cron, eventos e webhooks
+- Reconciliação financeira e onboarding de fornecedores
+- KPIs, ROI e relatórios executivos do processo APA
 
 ---
 

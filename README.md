@@ -45,6 +45,29 @@ copy .env.example .env
 | 12 | Manual vs Frameworks | `modulo_12_frameworks/` |
 | 13 | Segurança e Governança | `modulo_13_seguranca_governanca/` |
 | 14 | Streaming e UX | `modulo_14_streaming_ux/` |
+| 15 | PDF e OCR | `modulo_15_pdf_ocr/` |
+| 16 | Integração com APIs REST | `modulo_16_api_rest/` |
+| 17 | Métricas e SLA em Produção | `modulo_17_metricas_sla/` |
+| 18 | Versionamento de Prompts | `modulo_18_versionamento_prompts/` |
+| 19 | Checkpoint e Retomada | `modulo_19_checkpoint/` |
+| 20 | Processamento em Lote | `modulo_20_batch/` |
+| 21 | Custos e Tokens | `modulo_21_custos_tokens/` |
+| 22 | Testes com LLM Mockada | `modulo_22_testes_mock/` |
+| 23 | Context Window | `modulo_23_context_window/` |
+| 24 | Roteamento Dinâmico | `modulo_24_roteamento/` |
+| 25 | Privacidade e LGPD | `modulo_25_lgpd/` |
+| 26 | RPA e Browser Automation | `modulo_26_rpa_browser/` |
+| 27 | Text-to-SQL | `modulo_27_text_to_sql/` |
+| 28 | Documentos Multimodais | `modulo_28_multimodal/` |
+| 29 | State Machine | `modulo_29_state_machine/` |
+| 30 | Ambiente Corporativo | `modulo_30_ambiente_corporativo/` |
+| 31 | Notificações (e-mail, Teams, Slack) | `modulo_31_notificacoes/` |
+| 32 | Agente como Microsserviço REST | `modulo_32_microsservico_fastapi/` |
+| 33 | Agendamento e Gatilhos de Processo | `modulo_33_agendamento_gatilhos/` |
+| 34 | Reconciliação Financeira Automática | `modulo_34_reconciliacao/` |
+| 35 | Onboarding de Fornecedores | `modulo_35_onboarding_fornecedor/` |
+| 36 | KPIs e ROI do Processo APA | `modulo_36_kpis_roi/` |
+| 37 | Escalação com SLA | `modulo_37_escalacao_sla/` |
 
 ## Guia Completo
 
@@ -61,12 +84,30 @@ Usamos a API gratuita do **Groq** com o modelo **Llama 3.3 70B**.
 
 ## Expansão para Produção
 
-Além da trilha base, o treinamento agora inclui uma camada de maturidade com:
+Além da trilha base (módulos 01–14), o treinamento inclui camadas progressivas de maturidade:
 
-- comparação de arquiteturas de agentes
-- tracing e logs auditáveis
-- memória de longo prazo e recuperação simples
-- retry, backoff e fallback de modelo
-- governança e segurança operacional
-- streaming no terminal
-- testes automatizados com `pytest`
+**Camada 2 — Integração e Qualidade (módulos 15–20)**
+
+- PDF/OCR, integração REST com OAuth 2, métricas e SLA em produção
+- Versionamento de prompts, checkpoints, processamento em lote
+
+**Camada 3 — Operação Avançada (módulos 21–25)**
+
+- Controle de custos de tokens, testes com LLM mockada (custo $0)
+- Context window, roteamento dinâmico, privacidade e LGPD
+
+**Camada 4 — APA Corporativa (módulos 26–31)**
+
+- Browser automation para sistemas legados, Text-to-SQL
+- Documentos multimodais, state machine auditável
+- Configuração em ambiente corporativo (proxy, SSL, OAuth2)
+- Notificações via e-mail, Teams e Slack
+
+**Camada 5 — APA em Produção (módulos 32–37)**
+
+- Agente exposto como microsserviço REST (FastAPI)
+- Gatilhos automáticos: cron, fila de eventos, webhook (HMAC)
+- Reconciliação financeira banco × ERP com classificação de divergências
+- Onboarding de fornecedores (CNPJ, Receita Federal, sanções, certidões)
+- KPIs e cálculo de ROI para justificativa executiva
+- Escalação com SLA: N1 → N2 → N3 com notificação automática
