@@ -6,11 +6,11 @@
 
 | Item | Detalhe |
 | ------ | --------- |
-| **Duração estimada** | 14 a 18 horas |
+| **Duração estimada** | 18 a 24 horas |
 | **Nível** | Intermediário (requer Python básico) |
 | **LLM** | Groq API (gratuita) + Llama 3.3 70B |
 | **Projeto Final** | Agente de Leitura de Boletos Bancários |
-| **Módulos** | 43 (trilha base + camadas de maturidade APA) |
+| **Módulos** | 47 (trilha base + camadas de maturidade APA) |
 
 ### Objetivo
 
@@ -1158,6 +1158,93 @@ implausível) e refaz a tarefa com estratégias progressivas
 
 ---
 
+## MÓDULO 44: RAG Avançado com Reranking (25 min)
+
+### Objetivo — RAG Avançado
+
+Evoluir do RAG básico para hybrid search (BM25 + embedding)
+combinado via RRF e re-ordenado por um cross-encoder reranker,
+ordando precisão sem aumentar o custo de inference.
+
+### Arquivos — RAG Avançado
+
+- `modulo_44_rag_avancado/01_rag_avancado.py`
+
+### O que demonstrar — RAG Avançado
+
+1. `BM25` e `BuscaEmbedding` indexam chunks independentemente
+2. `rrf_fusion` combina rankings sem normalizar scores
+3. `CrossEncoderReranker` pontua pares (query, doc) com precisão
+4. Comparativo: BM25 only vs Hybrid+Rerank (tabela de rankings)
+
+---
+
+## MÓDULO 45: Structured Outputs com instructor (20 min)
+
+### Objetivo — Structured Outputs
+
+Formar o LLM a retornar exatamente o schema definido em
+Pydantic/dataclass, eliminando parsing manual e tratando
+erros de validação automaticamente com retry contextual.
+
+### Arquivos — Structured Outputs
+
+- `modulo_45_structured_outputs/01_structured_outputs.py`
+
+### O que demonstrar — Structured Outputs
+
+1. `BoletoExtraido.from_dict` valida e coerce tipos (string->float)
+2. `gerar_prompt_schema` mostra schema como fonte única da verdade
+3. `InstructorSimulado` implementa retry com contexto de erro
+4. Comparativo: 3 documentos com diferentes falhas e correcões
+
+---
+
+## MÓDULO 46: Multi-Agent Debate (25 min)
+
+### Objetivo — Debate Multi-Agente
+
+Reducir viés de decisão criando 3 agentes com perspectivas
+deflibertadamente diferentes (conservador, neutro, liberal)
+que debatem em 2 rodadas e votam na decisão final.
+
+### Arquivos — Multi-Agent Debate
+
+- `modulo_46_debate_multiagente/01_debate_multiagente.py`
+
+### O que demonstrar — Multi-Agent Debate
+
+1. `AgentePerspectiva` gera voto com viés configurado
+2. Rodada 2: agentes veem argumentos alheios e podem mudar voto
+3. `Moderador` agrega votos; empate → voto do neutro
+4. Demo: 3 casos (unanimidade, maioria, empate)
+
+---
+
+## MÓDULO 47: Case Final — Pipeline de Aprovação de Faturas (40 min)
+
+### Objetivo — Case Final
+
+Hands-on que integra os conceitos de todo o treinamento em um
+pipeline de produção real: extração com auto-correção,
+validação com guardrails, política via RAG, escalação automática,
+trace completo e KPIs de ROI.
+
+### Arquivos — Case Final
+
+- `modulo_47_case_final/01_case_final.py`
+
+### O que demonstrar — Case Final
+
+1. Pipeline com 5 estágios: extração, validação, política,
+   decisão, registro
+2. 5 cenarios reais: happy path, alto valor, CNPJ inválido,
+   duplicata, dados incompletos
+3. Trace por fatura com trace_id e latência por estágio
+4. KPIs de produção: taxa de aprovação, latência média, retries
+
+---
+
 ## 🎯 Checklist Final
 
 Ao final do treinamento, os participantes devem ser capazes de:
@@ -1207,6 +1294,10 @@ Ao final do treinamento, os participantes devem ser capazes de:
 - [ ] Preparar dataset e estimar custo de fine-tuning de domínio
 - [ ] Implementar prompt caching para reduzir custo em até 90%
 - [ ] Construir agente auto-corretivo com retry e prompt dinâmico
+- [ ] Implementar RAG avançado com hybrid search e reranking
+- [ ] Forcar saída estruturada com instructor e retry automático
+- [ ] Orquestrar debate multi-agente com perspectivas diferentes
+- [ ] Integrar todos os conceitos em um pipeline de produção completo
 
 ---
 
@@ -1386,6 +1477,18 @@ python modulo_42_prompt_caching/01_prompt_caching.py
 
 # Módulo 43
 python modulo_43_agente_autocorretivo/01_agente_autocorretivo.py
+
+# Módulo 44
+python modulo_44_rag_avancado/01_rag_avancado.py
+
+# Módulo 45
+python modulo_45_structured_outputs/01_structured_outputs.py
+
+# Módulo 46
+python modulo_46_debate_multiagente/01_debate_multiagente.py
+
+# Módulo 47 (Case Final)
+python modulo_47_case_final/01_case_final.py
 
 # Testes automatizados
 pytest

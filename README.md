@@ -74,6 +74,10 @@ copy .env.example .env
 | 41 | Fine-Tuning para Domínio Específico | `modulo_41_fine_tuning/` |
 | 42 | Prompt Caching | `modulo_42_prompt_caching/` |
 | 43 | Agente Auto-Corretivo | `modulo_43_agente_autocorretivo/` |
+| 44 | RAG Avançado com Reranking | `modulo_44_rag_avancado/` |
+| 45 | Structured Outputs com instructor | `modulo_45_structured_outputs/` |
+| 46 | Multi-Agent Debate | `modulo_46_debate_multiagente/` |
+| 47 | Case Final: Pipeline de Aprovação | `modulo_47_case_final/` |
 
 ## Guia Completo
 
@@ -126,3 +130,10 @@ Além da trilha base (módulos 01–14), o treinamento inclui camadas progressiv
 - Fine-tuning: preparação de dataset, avaliação de qualidade e estimativa de custo
 - Prompt caching: redução de custo em até 90% e latência em até 85%
 - Agente auto-corretivo: detecção de erros próprios e retry com prompt dinâmico
+
+### Camada 7 — Qualidade, Robustez e Case de Produção (módulos 44–47)
+
+- RAG avançado: hybrid search (BM25 + embedding) + RRF + cross-encoder reranker
+- Structured outputs: schema Pydantic como fonte única da verdade com retry automático
+- Multi-Agent Debate: 3 agentes com perspectivas diferentes votam em 2 rodadas
+- Case final: pipeline end-to-end de aprovação de faturas integrando 9+ módulos
