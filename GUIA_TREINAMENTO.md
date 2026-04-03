@@ -788,6 +788,120 @@ Aplicar controles de privacidade LGPD no pipeline do agente: detectar dados pess
 
 ---
 
+## MÓDULO 26: RPA e Automação de Browser (20 min)
+
+### Objetivo — RPA
+
+Combinar agentes de IA com automação de browser (Playwright) para acessar sistemas legados sem API — o "último milha" da APA.
+
+### Arquivos — RPA
+
+- `modulo_26_rpa_browser/01_rpa_browser.py`
+
+### O que demonstrar — RPA
+
+1. `BrowserSimulado` com modo dry-run para validar fluxo sem abrir browser
+2. `AgenteRPA` encapsulando login + extração de boletos
+3. Registro de auditoria de cada ação executada
+4. Equivalente Playwright real (código comentado)
+
+---
+
+## MÓDULO 27: Agentes com Banco de Dados — Text-to-SQL (20 min)
+
+### Objetivo — Text-to-SQL
+
+Converter perguntas em linguagem natural em queries SQL, validar contra comandos perigosos e executar com segurança em banco relacional.
+
+### Arquivos — Text-to-SQL
+
+- `modulo_27_text_to_sql/01_text_to_sql.py`
+
+### O que demonstrar — Text-to-SQL
+
+1. Banco SQLite em memória com dados de boletos e pagamentos
+2. `carregar_schema()` injeta DDL no prompt do LLM
+3. `validar_sql()` bloqueia DROP/DELETE/INSERT/UPDATE
+4. Teste de bloqueio de SQL perigoso gerado por injeção
+
+---
+
+## MÓDULO 28: Processamento de Documentos Multi-modal (20 min)
+
+### Objetivo — Documentos
+
+Processar PDFs de boletos, NF-e e contratos, detectar o tipo de documento automaticamente e extrair campos estruturados com nível de confiança.
+
+### Arquivos — Documentos
+
+- `modulo_28_documentos_multimodal/01_documentos_multimodal.py`
+
+### O que demonstrar — Documentos
+
+1. Detecção de tipo de documento por padrões regex
+2. Extratores estruturados: `extrair_boleto`, `extrair_nfe`, `extrair_contrato`
+3. Score de confiança baseado em campos encontrados
+4. Integração com pdfplumber real (código comentado)
+
+---
+
+## MÓDULO 29: State Machine para Fluxos de Aprovação (20 min)
+
+### Objetivo — State Machine
+
+Modelar workflows corporativos de aprovação como máquinas de estado com transições explícitas, regras de negócio (dupla aprovação) e log de auditoria imutável.
+
+### Arquivos — State Machine
+
+- `modulo_29_state_machine/01_state_machine.py`
+
+### O que demonstrar — State Machine
+
+1. Enum `Estado` e dict `TRANSICOES` como contrato do fluxo
+2. `MaquinaAprovacao` com validação de transições
+3. Regra de dupla aprovação para valores > R$ 10.000
+4. Log de auditoria append-only com timestamp
+
+---
+
+## MÓDULO 30: Agente em Ambiente Corporativo (20 min)
+
+### Objetivo — Ambiente Corporativo
+
+Configurar agentes para redes com proxy HTTP, certificados SSL internos e autenticação OAuth2 service-to-service — obstáculos reais em produção.
+
+### Arquivos — Ambiente Corporativo
+
+- `modulo_30_ambiente_corporativo/01_ambiente_corporativo.py`
+
+### O que demonstrar — Ambiente Corporativo
+
+1. `ConfigCorporativa` carregada de variáveis de ambiente
+2. `ClienteHTTPCorporativo` com proxy + retry + backoff
+3. `GerenciadorOAuth2` com cache e renovação automática de token
+4. Checklist de onboarding para ambientes corporativos
+
+---
+
+## MÓDULO 31: Integração com Sistemas de Notificação (20 min)
+
+### Objetivo — Notificações
+
+Fechar o loop de automação notificando as pessoas certas via e-mail, Teams e Slack quando o agente completa tarefas ou detecta problemas.
+
+### Arquivos — Notificações
+
+- `modulo_31_notificacoes/01_notificacoes.py`
+
+### O que demonstrar — Notificações
+
+1. Padrão Observer: `EventoBus` desacopla publicador dos canais
+2. `NotificadorTeams` com Adaptive Card JSON
+3. `NotificadorSlack` com Block Kit
+4. Log de entrega de notificações para rastreabilidade
+
+---
+
 ## 🎯 Checklist Final
 
 Ao final do treinamento, os participantes devem ser capazes de:
@@ -818,6 +932,12 @@ Ao final do treinamento, os participantes devem ser capazes de:
 - [ ] Aplicar chunking/sliding window para documentos longos
 - [ ] Implementar roteamento dinâmico para múltiplos tipos de documento
 - [ ] Aplicar controles de privacidade LGPD no pipeline do agente
+- [ ] Automatizar acesso a sistemas legados sem API com browser automation
+- [ ] Construir agente Text-to-SQL com validação de segurança
+- [ ] Processar PDFs e detectar tipo de documento automaticamente
+- [ ] Modelar fluxo de aprovação como state machine auditável
+- [ ] Configurar agente em ambiente corporativo (proxy, SSL, OAuth2)
+- [ ] Integrar notificações de e-mail, Teams e Slack no pipeline
 - [ ] Orquestrar múltiplos agentes com handoff e trilha de auditoria
 
 ---
@@ -944,6 +1064,24 @@ python modulo_24_roteamento/01_roteamento_dinamico.py
 
 # Módulo 25
 python modulo_25_lgpd_privacidade/01_lgpd_privacidade.py
+
+# Módulo 26
+python modulo_26_rpa_browser/01_rpa_browser.py
+
+# Módulo 27
+python modulo_27_text_to_sql/01_text_to_sql.py
+
+# Módulo 28
+python modulo_28_documentos_multimodal/01_documentos_multimodal.py
+
+# Módulo 29
+python modulo_29_state_machine/01_state_machine.py
+
+# Módulo 30
+python modulo_30_ambiente_corporativo/01_ambiente_corporativo.py
+
+# Módulo 31
+python modulo_31_notificacoes/01_notificacoes.py
 
 # Testes automatizados
 pytest
