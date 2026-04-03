@@ -95,6 +95,7 @@ class LancamentoERP:
 
 
 class TipoDivergencia(str, Enum):
+    """Tipos de divergência encontrados na conciliação bancária."""
     OK = "OK"
     DUPLICIDADE = "DUPLICIDADE"
     AUSENTE_ERP = "AUSENTE_ERP"
@@ -161,6 +162,7 @@ class EngineConciliacao:
         extrato: list[LancamentoBanco],
         erp: list[LancamentoERP],
     ) -> list[ResultadoConciliacao]:
+        """Realiza a conciliação entre extrato bancário e lançamentos ERP."""
         resultados: list[ResultadoConciliacao] = []
         erp_nao_casados: set[str] = {e.id for e in erp}
         banco_nao_casados: set[str] = {b.id for b in extrato}
@@ -338,6 +340,7 @@ def gerar_sumario_llm(
 # ============================================================
 
 def demo_reconciliacao() -> None:
+    """Demonstration do processo de conciliação bancária automatizada."""
     console.print(
         Panel(
             "[bold]Módulo 34 — Reconciliação e Conciliação "

@@ -53,6 +53,7 @@ console = Console()
 # ============================================================
 
 class NivelEscalacao(Enum):
+    """Níveis de escalação hierárquica para casos de revisão."""
     N1_ANALISTA = "N1 - Analista"
     N2_GESTOR = "N2 - Gestor"
     N3_DIRETORIA = "N3 - Diretoria"
@@ -60,6 +61,8 @@ class NivelEscalacao(Enum):
 
 
 class StatusCaso(Enum):
+    """Status de um caso de revisão,
+    desde a criação até a resolução ou expiração."""
     ABERTO = "Aberto"
     EM_REVISAO = "Em Revisão"
     RESOLVIDO = "Resolvido"
@@ -67,6 +70,11 @@ class StatusCaso(Enum):
 
 
 class StatusSLA(Enum):
+    """Status do SLA baseado no tempo decorrido em relação ao prazo definido:
+    - OK: dentro do prazo
+    - EM_RISCO: > 80% do prazo consumido
+    - VIOLADO: prazo ultrapassado
+    - CUMPRIDO: resolvido dentro do prazo"""
     OK = "OK"
     EM_RISCO = "Em Risco"       # > 80% do prazo consumido
     VIOLADO = "Violado"         # prazo ultrapassado
@@ -155,16 +163,19 @@ class CasoRevisao:
 
     @property
     def sla_limite(self) -> timedelta:
+        """Retorna o prazo máximo para resposta no nível atual."""
         return timedelta(
             hours=SLA_HORAS[self.nivel_atual]
         )
 
     @property
     def tempo_no_nivel(self) -> timedelta:
+        """Calcula o tempo decorrido desde a última mudança de nível."""
         return datetime.now() - self.nivel_desde
 
     @property
     def percentual_sla(self) -> float:
+        """Calcula o percentual do SLA consumido no nível atual."""
         return (
             self.tempo_no_nivel.total_seconds()
             / self.sla_limite.total_seconds()
@@ -172,6 +183,7 @@ class CasoRevisao:
 
     @property
     def status_sla(self) -> StatusSLA:
+        """Determina o status do SLA com base no tempo decorrido."""
         if self.resolvido_em:
             return StatusSLA.CUMPRIDO
         p = self.percentual_sla
@@ -324,6 +336,7 @@ class GerenciadorSLA:
     # ---- relatório ----
 
     def exibir_dashboard(self) -> None:
+        """Exibe tabela com status de SLA de todos os casos abertos."""
         tabela = Table(
             title="Dashboard de SLA",
             header_style="bold magenta",
@@ -358,6 +371,7 @@ class GerenciadorSLA:
     def exibir_historico_caso(
         self, caso_id: str
     ) -> None:
+        """Exibe o histórico de eventos de um caso específico."""
         caso = self._buscar(caso_id)
         console.print(
             f"\n  [bold]Histórico do caso {caso_id}[/]"
@@ -379,6 +393,7 @@ class GerenciadorSLA:
 # ============================================================
 
 def demo_escalacao_sla() -> None:
+    """Demonstração do gerenciador de SLA e escalação automática."""
     console.print(
         Panel(
             "[bold]Módulo 37 — Escalação com SLA[/]\n"

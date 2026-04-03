@@ -111,6 +111,7 @@ class SolicitacaoCadastro:
 
 
 class StatusVerificacao(str, Enum):
+    """Status de cada etapa de verificação: OK, PENDENTE ou BLOQUEADO."""
     OK = "OK"
     PENDENTE = "PENDENTE"
     BLOQUEADO = "BLOQUEADO"
@@ -125,6 +126,8 @@ class ResultadoVerificacao:
 
 
 class DecisaoFinal(str, Enum):
+    """Decisão final do processo de onboarding:
+    APROVADO, CONDICIONAL ou REJEITADO."""
     APROVADO = "APROVADO"
     CONDICIONAL = "CONDICIONAL"
     REJEITADO = "REJEITADO"
@@ -227,6 +230,7 @@ class MotorOnboarding:
     def avaliar(
         self, solicitacao: SolicitacaoCadastro
     ) -> ParecerCadastro:
+        """Avalia a solicitação de cadastro e retorna um parecer final."""
         verificacoes: list[ResultadoVerificacao] = []
         observacoes: list[str] = []
 
@@ -390,6 +394,7 @@ class MotorOnboarding:
 # ============================================================
 
 def demo_onboarding_fornecedores() -> None:
+    """Demonstration do pipeline de onboarding automatizado de fornecedores."""
     console.print(
         Panel(
             "[bold]Módulo 35 — Onboarding Automatizado "

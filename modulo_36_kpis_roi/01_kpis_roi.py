@@ -46,6 +46,8 @@ Tópicos cobertos:
 
 from __future__ import annotations
 
+import json
+import random
 import statistics
 from dataclasses import dataclass
 from datetime import datetime
@@ -81,10 +83,12 @@ class RegistroExecucao:
 
     @property
     def sucesso(self) -> bool:
+        """Indica se a execução foi bem-sucedida (sem erros)."""
         return self.erro is None
 
     @property
     def precisao(self) -> float:
+        """Calcula a precisão da extração de campos."""
         if self.campos_extraidos == 0:
             return 0.0
         return self.campos_corretos / self.campos_extraidos
@@ -125,20 +129,24 @@ class ColetorKPI:
         self._registros: list[RegistroExecucao] = []
 
     def registrar(self, exec_: RegistroExecucao) -> None:
+        """Adiciona um registro de execução para cálculo de métricas."""
         self._registros.append(exec_)
 
     # ---- KPIs de volume ----
 
     @property
     def total_processados(self) -> int:
+        """Retorna o total de documentos processados (registros acumulados)."""
         return len(self._registros)
 
     @property
     def total_erros(self) -> int:
+        """Retorna o total de execuções com erro."""
         return sum(1 for r in self._registros if not r.sucesso)
 
     @property
     def total_revisao_humana(self) -> int:
+        """Retorna o total de documentos que requereram revisão humana."""
         return sum(
             1 for r in self._registros if r.requer_revisao
         )
@@ -147,18 +155,21 @@ class ColetorKPI:
 
     @property
     def taxa_sucesso(self) -> float:
+        """Calcula a taxa de sucesso das execuções."""
         if not self._registros:
             return 0.0
         return 1 - self.total_erros / self.total_processados
 
     @property
     def taxa_revisao(self) -> float:
+        """Calcula a taxa de documentos que requereram revisão humana."""
         if not self._registros:
             return 0.0
         return self.total_revisao_humana / self.total_processados
 
     @property
     def confianca_media(self) -> float:
+        """Calcula a confiança média das execuções bem-sucedidas."""
         vals = [
             r.confianca for r in self._registros
             if r.sucesso
@@ -167,6 +178,7 @@ class ColetorKPI:
 
     @property
     def precisao_media(self) -> float:
+        """Calcula a precisão média das execuções bem-sucedidas."""
         vals = [
             r.precisao for r in self._registros
             if r.sucesso
@@ -177,6 +189,7 @@ class ColetorKPI:
 
     @property
     def duracao_media_ms(self) -> float:
+        """Calcula a duração média (latência) das execuções bem-sucedidas."""
         vals = [
             r.duracao_ms for r in self._registros
             if r.sucesso
@@ -185,6 +198,7 @@ class ColetorKPI:
 
     @property
     def duracao_p95_ms(self) -> float:
+        """Calcula o percentil 95 da duração das execuções bem-sucedidas."""
         vals = sorted(
             r.duracao_ms for r in self._registros
             if r.sucesso
@@ -198,6 +212,7 @@ class ColetorKPI:
 
     @property
     def custo_total_tokens_usd(self) -> float:
+        """Calcula o custo total em tokens (USD) das execuções."""
         return sum(
             r.custo_tokens_usd for r in self._registros
         )
@@ -364,7 +379,6 @@ def exibir_relatorio(coletor: ColetorKPI) -> None:
 
 def _gerar_registros_simulados() -> list[RegistroExecucao]:
     """Cria conjunto de execuções simuladas para o demo."""
-    import random
     random.seed(42)
 
     tipos = ["boleto", "nfe", "contrato"]
@@ -400,6 +414,7 @@ def _gerar_registros_simulados() -> list[RegistroExecucao]:
 
 
 def demo_kpis_roi() -> None:
+    """Demonstração do coletor de KPIs e relatório de ROI."""
     console.print(
         Panel(
             "[bold]Módulo 36 — KPIs e Relatório de ROI[/]\n"
@@ -424,7 +439,6 @@ def demo_kpis_roi() -> None:
     exibir_relatorio(coletor)
 
     console.rule("[yellow]Exportação (API / Prometheus)")
-    import json
     console.print(
         json.dumps(coletor.exportar_dict(), indent=2)
     )
